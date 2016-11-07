@@ -3,10 +3,10 @@ package logic.filtration;
 import domain.Obligation;
 
 public class PercentsFilter implements Filter {
-	private int min;
-	private int max;
+	private double min;
+	private double max;
 	
-	public PercentsFilter(int min, int max) {
+	public PercentsFilter(double min, double max) {
 		if (min>max) {
 			this.min = max;
 			this.max = min;

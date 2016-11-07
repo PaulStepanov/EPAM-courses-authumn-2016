@@ -5,7 +5,7 @@ import java.security.InvalidParameterException;
 public class Obligation {
 	private final ObligationType type;
 	private int terms;
-	private int percents;
+	private double percents;
 	private int property;
 	private double riskDegree;
 	private int cost;
@@ -32,7 +32,7 @@ public class Obligation {
 			throw new InvalidParameterException(); 
 		}
 		this.property = property;
-		this.cost=(property/100)*this.percents;
+		this.cost=(int) ((property/100)*this.percents);
 	}
 
 	public double getRiskDegree() {
@@ -43,7 +43,7 @@ public class Obligation {
 		this.riskDegree = riskDegree;
 	}
 
-	public int getPercents() {
+	public double getPercents() {
 		return percents;
 	}
 	
