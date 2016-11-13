@@ -8,8 +8,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public interface ObligationsSorter {
-	
-	public List<Obligation> sort(List<Obligation> list,
-			 Comparator<Obligation> comparator);
-	
+
+    public List<Obligation> sort(List<Obligation> list, Comparator<Obligation> comparator);
+
 }

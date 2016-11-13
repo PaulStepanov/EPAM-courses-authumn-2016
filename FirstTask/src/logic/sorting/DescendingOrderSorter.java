@@ -9,13 +9,11 @@ import domain.Obligation;
 
 public class DescendingOrderSorter implements ObligationsSorter {
 
-	@Override
-	public ArrayList<Obligation> sort(List<Obligation> list,
-			 Comparator<Obligation> comparator) {
-		ArrayList<Obligation> result=new ArrayList<Obligation>();
-		result.addAll(list);
-		Collections.sort(result,
-				Collections.reverseOrder(comparator));
-		return result;
-	}	
+    @Override
+    public ArrayList<Obligation> sort(List<Obligation> list, Comparator<Obligation> comparator) {
+        ArrayList<Obligation> result = new ArrayList<Obligation>();
+        result.addAll(list);
+        Collections.sort(result, Collections.reverseOrder(comparator));
+        return result;
+    }
 }

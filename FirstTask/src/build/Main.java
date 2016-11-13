@@ -7,16 +7,14 @@ import view.ConsoleView;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Controler controler =new ConsoleControler(System.in,
-				new DeritativeStorage(),
-				new ConsoleView());
-		
-		controler.selectDeritativeFromDB();
-		controler.countCost();
-		controler.sortDeritative();
-		while (true)
-			controler.filterDeritative();
-	}
+    public static void main(String[] args) {
+        Controler controler = new ConsoleControler(System.in, new DeritativeStorage(), new ConsoleView());
+
+        controler.selectDeritativeFromDB();
+        controler.countCost();
+        controler.sortDeritative();
+        while (true)
+            controler.filterDeritative();
+    }
 
 }

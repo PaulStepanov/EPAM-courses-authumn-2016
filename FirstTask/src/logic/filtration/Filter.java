@@ -3,5 +3,5 @@ package logic.filtration;
 import domain.Obligation;
 
 public interface Filter {
-	public boolean  isSatisfy(Obligation obl);
+    public boolean isSatisfy(Obligation obl);
 }
