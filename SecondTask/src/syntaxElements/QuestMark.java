@@ -1,6 +1,8 @@
 package syntaxElements;
 
-public class QuestMark extends Symbol {
+import logicElement.SentenseElement;
+
+public class QuestMark extends Symbol implements SentenseElement{
 
     public QuestMark() {
         super("?");

@@ -2,7 +2,7 @@ package syntaxElements;
 
 import logicElement.SentenseElement;
 
-public abstract class Symbol implements SentenseElement{
+public abstract class Symbol {
      private String value;
     
     public Symbol(String value) {

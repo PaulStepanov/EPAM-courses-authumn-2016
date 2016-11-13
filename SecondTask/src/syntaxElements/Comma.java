@@ -1,6 +1,8 @@
 package syntaxElements;
 
-public class Comma extends Symbol {
+import logicElement.SentenseElement;
+
+public class Comma extends Symbol implements SentenseElement{
 
     public Comma() {
         super(",");

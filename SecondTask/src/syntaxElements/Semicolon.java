@@ -1,6 +1,8 @@
 package syntaxElements;
 
-public class Semicolon extends Symbol {
+import logicElement.SentenseElement;
+
+public class Semicolon extends Symbol implements SentenseElement{
 
     public Semicolon(String value) {
         super(";");
