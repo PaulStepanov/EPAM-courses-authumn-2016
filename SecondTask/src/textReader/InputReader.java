@@ -6,4 +6,6 @@ public interface InputReader {
     
     public String nextLine();
     
+    public boolean hasNext();
+    
 }

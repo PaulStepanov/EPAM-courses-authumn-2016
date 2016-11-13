@@ -1,6 +1,6 @@
 package syntaxElements;
 
-import logicElement.SentenseElement;
+import logicElements.SentenseElement;
 
 public abstract class Symbol {
      private String value;

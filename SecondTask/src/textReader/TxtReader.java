@@ -1,17 +1,31 @@
 package textReader;
 
-import java.io.InputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Scanner;
 
 public class TxtReader implements InputReader {
 
-    private InputStream inpStream;
-    @Override
+    private Scanner scanner;
+    
+    
+    public TxtReader(String fileLocation) throws FileNotFoundException {
+		this.setFile(fileLocation); 	
+	}
+
+	@Override
     public String nextLine() {
-        return null;
+        return scanner.nextLine();
     }
     
-    public void setFile(){
-        
-    };
+    public void setFile(String fileLocation) throws FileNotFoundException {
+    	FileReader fileReader=new FileReader(fileLocation);
+		scanner=new Scanner(fileReader); 
+    }
+
+	@Override
+	public boolean hasNext() {
+		return scanner.hasNext();
+	};
 
 }
