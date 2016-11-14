@@ -9,22 +9,32 @@ public class Sentense {
     private String fullVal;
     private HashMap<Integer, SentenseElement> elements=new HashMap<>() ;
     
-	public Sentense(String fullVal) {
+    public Sentense(String fullVal) {
 		this.fullVal = fullVal;
 		splitOnElements();
 	}
     
-   private void splitOnElements(){
+    public void splitOnElements(){
 	   Pattern pattern = Pattern.compile("([^\\s]+\\w)|([^\\s]\\W)");
 	   Matcher matcher = pattern.matcher(fullVal);
 	   while (matcher.find()){
-		   System.out.println(matcher.group());
 		   elements.put(matcher.start(),
 				   		ElementCreator.createElem(matcher.group()));
-	   }
-   }
+		   }
+	}
+    
+    public void deleteMaxSubstring(String symbol){
+    	Pattern pattern = Pattern.compile("("+symbol+".+"+symbol+")");
+    	Matcher matcher = pattern.matcher(fullVal);
+    	matcher.replaceAll("");
+    	splitOnElements();
+    }
 
 	public HashMap<Integer, SentenseElement> getElements() {
 		return elements;
+	}
+	
+	public String toString(){
+		return fullVal;
 	}
 }
