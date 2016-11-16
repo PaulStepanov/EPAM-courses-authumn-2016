@@ -17,7 +17,7 @@ public class TxtReader implements InputReader {
         return scanner.nextLine();
     }
 
-    public void setFile(String fileLocation) throws FileNotFoundException {
+    private void setFile(String fileLocation) throws FileNotFoundException {
         FileReader fileReader = new FileReader(fileLocation);
         scanner = new Scanner(fileReader);
     }
@@ -25,6 +25,6 @@ public class TxtReader implements InputReader {
     @Override
     public boolean hasNext() {
         return scanner.hasNext();
-    };
+    }
 
 }

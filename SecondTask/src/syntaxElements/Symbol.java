@@ -1,11 +1,9 @@
 package syntaxElements;
 
-import logicElements.SentenseElement;
-
-public abstract class Symbol {
+abstract class Symbol {
     private String value;
 
-    public Symbol(String value) {
+    Symbol(String value) {
         this.value = value;
     }
 

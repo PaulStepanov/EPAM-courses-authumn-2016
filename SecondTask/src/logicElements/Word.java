@@ -1,7 +1,7 @@
 package logicElements;
 
 public class Word implements SentenseElement {
-    private String value;
+    private final String value;
 
     public Word(String value) {
         this.value = value;

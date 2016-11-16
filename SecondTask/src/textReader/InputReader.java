@@ -1,11 +1,9 @@
 package textReader;
 
-import java.io.InputStream;
-
 public interface InputReader {
 
-    public String nextLine();
+    String nextLine();
 
-    public boolean hasNext();
+    boolean hasNext();
 
 }

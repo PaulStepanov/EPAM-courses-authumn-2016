@@ -5,7 +5,7 @@ import syntaxElements.Dot;
 import syntaxElements.QuestMark;
 import syntaxElements.Semicolon;
 
-public class SentenceElementCreator {
+class SentenceElementCreator {
     public static SentenseElement createElem(String str) {
         str = str.trim();
         if (str.equals(".")) {

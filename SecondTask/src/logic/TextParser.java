@@ -11,8 +11,8 @@ import logicElements.Paragraph;
 import logicElements.Sentense;
 import textReader.InputReader;
 
-public class TextParser {
-    private ArrayList<Paragraph> paragraphs = new ArrayList<>();
+class TextParser {
+    private final ArrayList<Paragraph> paragraphs = new ArrayList<>();
     private StringBuilder fullText = new StringBuilder();
 
     public TextParser(InputReader inputReader) {
@@ -22,7 +22,7 @@ public class TextParser {
         splitOnParagraphes();
     }
 
-    public void splitOnParagraphes() {
+    private void splitOnParagraphes() {
         Pattern pattern = Pattern.compile(RegExpConst.TEXT_SPLIT);
         Matcher matcher = pattern.matcher(fullText);
         while (matcher.find()) {
