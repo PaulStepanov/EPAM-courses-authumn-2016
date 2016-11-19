@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<paper
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:noNamespaceSchemaLocation="xsdSheme.xsd">
+    <periodical>
+        <title>
+            MyTitle
+        </title>
+        <type>
+            magazine
+        </type>
+        <monthly value="true"/>
+        <chars>
+            <colored value="true"/>
+            <size>1</size>
+            <gloss value="true"/>
+            <hasIndex value="true"/>
+        </chars>
+    </periodical>
+    <periodical>
+        <title>Mytitle1</title>
+        <type>newspaper</type>
+        <monthly value="true"/>
+        <chars>
+            <colored value="false"/>
+            <size>2</size>
+            <gloss value="true"/>
+            <hasIndex value="false"/>
+        </chars>
+    </periodical>
+
+
+</paper>

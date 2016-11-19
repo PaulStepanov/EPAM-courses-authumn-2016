@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="paper">
+        <xs:complexType>
+            <xs:sequence maxOccurs="unbounded">
+                <xs:element name="periodical">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element type="xs:ID" name="title"/>
+                            <xs:element  name="type">
+                                <xs:simpleType>
+                                    <xs:restriction>
+                                        <xs:enumeration value="newspaper"/>
+                                        <xs:enumeration value="magazine"/>
+                                        <xs:enumeration value="booklet"/>
+                                    </xs:restriction>
+                                </xs:simpleType>
+                            </xs:element>
+                            <xs:element name="monthly">
+                                <xs:complexType>
+                                    <xs:attribute name="value" type="xs:boolean" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="chars">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="colored">
+                                            <xs:complexType>
+                                                <xs:attribute type="xs:boolean" name="value"
+                                                              use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="size">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:integer">
+                                                    <xs:minInclusive value="1"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="gloss">
+                                            <xs:complexType>
+                                                <xs:attribute type="xs:boolean" name="value"
+                                                              use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="hasIndex">
+                                            <xs:complexType>
+                                                <xs:attribute type="xs:boolean" name="value" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
