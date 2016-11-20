@@ -9,7 +9,7 @@
                             <xs:element type="xs:ID" name="title"/>
                             <xs:element  name="type">
                                 <xs:simpleType>
-                                    <xs:restriction>
+                                    <xs:restriction base="xs:string">
                                         <xs:enumeration value="newspaper"/>
                                         <xs:enumeration value="magazine"/>
                                         <xs:enumeration value="booklet"/>
