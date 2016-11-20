@@ -1,9 +1,9 @@
 package logic.filtration;
 
+import domain.Obligation;
+
 import java.util.ArrayList;
 import java.util.List;
-
-import domain.Obligation;
 
 public class FiltratorImpl implements Filtrator {
     private List<Obligation> oblList;

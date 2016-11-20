@@ -9,8 +9,9 @@ public enum PeriodicalType {
     NEWSPAPER("newspaper");
 
     private String value;
+
     private PeriodicalType(String value) {
-        this.value=value;
+        this.value = value;
     }
 
 

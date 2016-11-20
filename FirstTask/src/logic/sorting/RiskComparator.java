@@ -1,8 +1,8 @@
 package logic.sorting;
 
-import java.util.Comparator;
-
 import domain.Obligation;
+
+import java.util.Comparator;
 
 public class RiskComparator implements Comparator<Obligation> {
 

@@ -1,10 +1,10 @@
 package logicElements;
 
+import constants.RegExpConst;
+
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import constants.RegExpConst;
 
 public class Sentense {
     private String fullVal;

@@ -1,11 +1,9 @@
 package logic.sorting;
 
-import java.util.List;
-
 import domain.Obligation;
 
-import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public interface ObligationsSorter {
 

@@ -1,10 +1,10 @@
 package storage;
 
-import java.util.HashMap;
-
 import domain.Deritative;
 import domain.Obligation;
 import domain.ObligationType;
+
+import java.util.HashMap;
 
 public class DeritativeStorage implements Storage {
     private HashMap<String, Deritative> deritatives = new HashMap<>();

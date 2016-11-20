@@ -1,8 +1,5 @@
 package controler;
 
-import java.io.InputStream;
-import java.util.Scanner;
-
 import domain.Deritative;
 import logic.filtration.FiltratorImpl;
 import logic.filtration.PercentsFilter;
@@ -12,6 +9,9 @@ import logic.sorting.DescendingOrderSorter;
 import logic.sorting.RiskComparator;
 import storage.Storage;
 import view.View;
+
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class ConsoleControler implements Controler {
     private InputStream iStream;
@@ -53,41 +53,41 @@ public class ConsoleControler implements Controler {
         FiltratorImpl fImpl = new FiltratorImpl(deritative.getObligations());
         int chosenNumber = scaner.nextInt();
         switch (chosenNumber) {
-        case 1: {
-            view.renderMessage("Filtering by percents.\n Enter min:");
-            double min = scaner.nextDouble();
-            view.renderMessage("Enter max:");
-            double max = scaner.nextDouble();
-            view.renderObligations(fImpl.filter(new PercentsFilter(min, max)));
-            break;
-        }
-        case 2: {
-            view.renderMessage("Filtering by property.\n Enter min:");
-            int min = scaner.nextInt();
-            view.renderMessage("Enter max:");
-            int max = scaner.nextInt();
-            view.renderObligations(fImpl.filter(new PropertyFilter(min, max)));
-            break;
-        }
-        case 3: {
-            view.renderMessage("Filtering by risk.\n Enter min:");
-            double min = scaner.nextDouble();
-            view.renderMessage("Enter max:");
-            double max = scaner.nextDouble();
-            view.renderObligations(fImpl.filter(new RiskFilter(min, max)));
-            break;
-        }
-        case 4: {
-            view.renderMessage("Filtering by risk.\n Enter min:");
-            int min = scaner.nextInt();
-            view.renderMessage("Enter max:");
-            int max = scaner.nextInt();
-            view.renderObligations(fImpl.filter(new RiskFilter(min, max)));
-            break;
-        }
-        default:
-            view.renderMessage("eneter valid number");
-            break;
+            case 1: {
+                view.renderMessage("Filtering by percents.\n Enter min:");
+                double min = scaner.nextDouble();
+                view.renderMessage("Enter max:");
+                double max = scaner.nextDouble();
+                view.renderObligations(fImpl.filter(new PercentsFilter(min, max)));
+                break;
+            }
+            case 2: {
+                view.renderMessage("Filtering by property.\n Enter min:");
+                int min = scaner.nextInt();
+                view.renderMessage("Enter max:");
+                int max = scaner.nextInt();
+                view.renderObligations(fImpl.filter(new PropertyFilter(min, max)));
+                break;
+            }
+            case 3: {
+                view.renderMessage("Filtering by risk.\n Enter min:");
+                double min = scaner.nextDouble();
+                view.renderMessage("Enter max:");
+                double max = scaner.nextDouble();
+                view.renderObligations(fImpl.filter(new RiskFilter(min, max)));
+                break;
+            }
+            case 4: {
+                view.renderMessage("Filtering by risk.\n Enter min:");
+                int min = scaner.nextInt();
+                view.renderMessage("Enter max:");
+                int max = scaner.nextInt();
+                view.renderObligations(fImpl.filter(new RiskFilter(min, max)));
+                break;
+            }
+            default:
+                view.renderMessage("eneter valid number");
+                break;
         }
 
     }

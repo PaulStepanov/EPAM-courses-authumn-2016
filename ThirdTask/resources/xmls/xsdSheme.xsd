@@ -7,7 +7,7 @@
                     <xs:complexType>
                         <xs:sequence>
                             <xs:element type="xs:ID" name="title"/>
-                            <xs:element  name="type">
+                            <xs:element name="type">
                                 <xs:simpleType>
                                     <xs:restriction base="xs:string">
                                         <xs:enumeration value="newspaper"/>

@@ -9,7 +9,8 @@ public class Periodical {
     private Boolean monthly;
     private PeriodicalChars periodicalChars;
 
-    public Periodical() {}
+    public Periodical() {
+    }
 
     public Periodical(String title, PeriodicalType type, Boolean monthly, PeriodicalChars periodicalChars) {
         this.title = title;

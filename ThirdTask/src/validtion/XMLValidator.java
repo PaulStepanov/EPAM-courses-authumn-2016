@@ -4,7 +4,6 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 import org.xml.sax.helpers.DefaultHandler;
 
-
 import javax.xml.XMLConstants;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
@@ -16,13 +15,13 @@ import java.io.IOException;
 /**
  * Created by Павел on 20-Nov-16.
  */
-public class XMLValidator extends DefaultHandler{
-    public  final String SCHEMA_FILE_NAME;
+public class XMLValidator extends DefaultHandler {
+    public final String SCHEMA_FILE_NAME;
 
     private StringBuilder error = new StringBuilder();
 
     public XMLValidator(String schemaFileName) {
-        this.SCHEMA_FILE_NAME=schemaFileName;
+        this.SCHEMA_FILE_NAME = schemaFileName;
     }
 
     private StringBuilder getErrorInfo(SAXParseException e) {

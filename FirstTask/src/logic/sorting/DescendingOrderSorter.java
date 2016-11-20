@@ -1,11 +1,11 @@
 package logic.sorting;
 
+import domain.Obligation;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-
-import domain.Obligation;
 
 public class DescendingOrderSorter implements ObligationsSorter {
 

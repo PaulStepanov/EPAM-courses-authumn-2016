@@ -1,9 +1,9 @@
 package view;
 
-import java.util.List;
-
 import domain.Deritative;
 import domain.Obligation;
+
+import java.util.List;
 
 public interface View {
 

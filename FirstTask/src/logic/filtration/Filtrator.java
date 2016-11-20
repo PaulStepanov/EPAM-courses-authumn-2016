@@ -1,8 +1,8 @@
 package logic.filtration;
 
-import java.util.List;
-
 import domain.Obligation;
+
+import java.util.List;
 
 public interface Filtrator {
     public List<Obligation> filter(Filter filter);

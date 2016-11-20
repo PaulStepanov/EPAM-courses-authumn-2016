@@ -54,9 +54,9 @@ public class PeriodicalChars {
     @Override
     public String toString() {
         return
-                "colored=" + colored +  "\n" +
-                "size=" + size + "\n" +
-                "gloss=" + gloss + "\n" +
-                "hasIndex=" + hasIndex + "\n" ;
+                "colored=" + colored + "\n" +
+                        "size=" + size + "\n" +
+                        "gloss=" + gloss + "\n" +
+                        "hasIndex=" + hasIndex + "\n";
     }
 }
