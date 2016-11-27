@@ -10,20 +10,31 @@
         <monthly value="true"/>
         <chars>
             <colored value="true"/>
-            <size>1</size>
+            <size>15</size>
             <gloss value="true"/>
             <hasIndex value="true"/>
         </chars>
     </periodical>
     <periodical>
         <title>Mytitle1</title>
-        <type>newspaper</type>
+        <type>booklet</type>
         <monthly value="true"/>
         <chars>
             <colored value="false"/>
-            <size>2</size>
+            <size>18</size>
             <gloss value="true"/>
             <hasIndex value="false"/>
+        </chars>
+    </periodical>
+    <periodical>
+        <title>Mytitle2</title>
+        <type>magazine</type>
+        <monthly value="true"/>
+        <chars>
+            <colored value="true"/>
+            <size>20</size>
+            <gloss value="true"/>
+            <hasIndex value="true"/>
         </chars>
     </periodical>
 
