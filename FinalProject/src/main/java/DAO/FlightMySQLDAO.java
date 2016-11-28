@@ -10,7 +10,7 @@ import java.sql.SQLException;
 /**
  * Created by Павел on 28-Nov-16.
  */
-public class FlightMySQLDAO implements DAO<FlightEntity, String> {
+public class FlightMySQLDAO implements FlightDAO{
     private Connection connection;
     private final String readStatement = "SELECT name,arrival,departure,flight_time,max_lagage_count FROM flight WHERE name=?";
     private CityDAO cityDAO;
