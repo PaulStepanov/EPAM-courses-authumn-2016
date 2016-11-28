@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `clients` (
   `surname`    VARCHAR(45) NOT NULL,
   `patronymic` VARCHAR(45),
   `phone`      VARCHAR(20) NULL DEFAULT NULL,
-  `users_ID`   INT         NOT NULL,
+  `users_ID`   INT UNIQUE  NOT NULL,
   INDEX `fk_clients_users1_idx` (`users_ID` ASC),
   PRIMARY KEY (`users_ID`),
   CONSTRAINT `fk_clients_users1`
@@ -27,30 +27,32 @@ CREATE TABLE IF NOT EXISTS `clients` (
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
 
-CREATE TABLE IF NOT EXISTS cities (
+CREATE TABLE IF NOT EXISTS `cities` (
   `name` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`name`)
+  `ID`   INT         NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID`)
 )
   ENGINE = InnoDB
   DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `flight` (
-  `name`             VARCHAR(9)  NOT NULL UNIQUE,
-  `arrival`          VARCHAR(45) NOT NULL,
-  `departure`        VARCHAR(45) NOT NULL,
+  `ID`               INT         NOT NULL AUTO_INCREMENT UNIQUE ,
+  `name`             VARCHAR(40) NOT NULL,
   `max_lagage_count` INT         NOT NULL,
   `flight_time`      TIME(6)     NOT NULL,
-  PRIMARY KEY (`name`),
-  INDEX `fk_flight_countries2_idx` (`arrival` ASC),
-  INDEX `fk_flight_countries1_idx` (`departure` ASC),
-  CONSTRAINT `fk_flight_countries2`
-  FOREIGN KEY (`arrival`)
-  REFERENCES cities (`name`)
+  `departure_ID`     INT         NOT NULL,
+  `arrival_ID`       INT         NOT NULL,
+  PRIMARY KEY (`ID`),
+  INDEX `fk_flight_countries1_idx` (`departure_ID` ASC),
+  INDEX `fk_flight_countries2_idx` (`arrival_ID` ASC),
+  CONSTRAINT `fk_flight_countries1`
+  FOREIGN KEY (`departure_ID`)
+  REFERENCES `cities` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_flight_countries1`
-  FOREIGN KEY (`departure`)
-  REFERENCES cities (`name`)
+  CONSTRAINT `fk_flight_countries2`
+  FOREIGN KEY (`arrival_ID`)
+  REFERENCES `cities` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
@@ -58,23 +60,23 @@ CREATE TABLE IF NOT EXISTS `flight` (
   DEFAULT CHARACTER SET = utf8;
 
 CREATE TABLE IF NOT EXISTS `current_flight` (
-  `ID`          INT        NOT NULL AUTO_INCREMENT,
-  `flight_name` VARCHAR(9) NOT NULL,
-  `date`        DATETIME   NOT NULL,
-  `ticket_cost` INT(11)    NOT NULL,
-  `lagage_cost` INT        NOT NULL,
+  `ID`          INT     NOT NULL AUTO_INCREMENT UNIQUE,
+  `ticket_cost` INT(11) NOT NULL,
+  `date`        DATE    NOT NULL,
+  `lagage_cost` INT     NOT NULL,
+  `flight_ID`   INT     NOT NULL,
   PRIMARY KEY (`ID`),
-  INDEX `fk_current_flight_flight2_idx` (`flight_name` ASC),
+  INDEX `fk_current_flight_flight2_idx` (`flight_ID` ASC),
   CONSTRAINT `fk_current_flight_flight2`
-  FOREIGN KEY (`flight_name`)
-  REFERENCES `flight` (`name`)
+  FOREIGN KEY (`flight_ID`)
+  REFERENCES `flight` (`ID`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION
 )
   ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `tickets` (
-  `ID`                INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `ID`                INT(10) UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
   `fly_cost`          INT(11)          NOT NULL,
   `clients_users_ID`  INT              NOT NULL,
   `lagage_capacity`   INT              NULL     DEFAULT 0,

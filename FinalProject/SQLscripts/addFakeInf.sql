@@ -12,16 +12,16 @@ INSERT INTO cities(`name`) VALUES ("Paris");
 -- flight
 
 
-INSERT INTO flight(name, arrival, max_lagage_count, flight_time, departure) VALUES ("KP-178","Kiev",2,'4:00:00',"Paris");
-INSERT INTO flight(name, arrival, max_lagage_count, flight_time, departure) VALUES ("MM-261","Moskow",4,'1:20:00',"Minsk");
-INSERT INTO flight(name, arrival, max_lagage_count, flight_time, departure) VALUES ("WV-2056","Warsaw",1,'2:35:00',"Vilnius");
-INSERT INTO flight(name, arrival, max_lagage_count, flight_time, departure) VALUES ("RL-9812","Riga",2,'3:38:00',"London");
+INSERT INTO flight(name, arrival_ID, max_lagage_count, flight_time, departure_ID) VALUES ("KP-178",3,2,'4:00:00',8);
+INSERT INTO flight(name, arrival_ID, max_lagage_count, flight_time, departure_ID) VALUES ("MM-261",2,4,'1:20:00',1);
+INSERT INTO flight(name, arrival_ID, max_lagage_count, flight_time, departure_ID) VALUES ("WV-2056",4,1,'2:35:00',6);
+INSERT INTO flight(name, arrival_ID, max_lagage_count, flight_time, departure_ID) VALUES ("RL-9812",7,2,'3:38:00',5);
 
 -- current_flight
-INSERT INTO current_flight(flight_name,ticket_cost,date,lagage_cost) VALUES("KP-178",600,"2016-12-31 11:30:00",10);
-INSERT INTO current_flight(flight_name,ticket_cost,date,lagage_cost) VALUES("KP-178",400,"2017-01-01 00:30:00",10);
-INSERT INTO current_flight(flight_name,ticket_cost,date,lagage_cost) VALUES("WV-2056",500,"2017-01-12 09:40:00",5);
-INSERT INTO current_flight(flight_name,ticket_cost,date,lagage_cost) VALUES("RL-9812",500,"2017-01-5 11:30:00",8);
+INSERT INTO current_flight(flight_ID,ticket_cost,date,lagage_cost) VALUES(1,600,"2016-12-31 11:30:00",10);
+INSERT INTO current_flight(flight_ID,ticket_cost,date,lagage_cost) VALUES(1,400,"2017-01-01 00:30:00",10);
+INSERT INTO current_flight(flight_ID,ticket_cost,date,lagage_cost) VALUES(3,500,"2017-01-12 09:40:00",5);
+INSERT INTO current_flight(flight_ID,ticket_cost,date,lagage_cost) VALUES(4,500,"2017-01-5 11:30:00",8);
 -- users
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Kurt_Adams74","P3qxfSAlxlaKJbs","VUBVjB51HoyIFjD",1);
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Demario94","XapRcH0vQN3nuzi","qXbUufZ7vjAo36f",2);

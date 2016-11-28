@@ -12,23 +12,24 @@ import java.sql.SQLException;
  * Created by Павел on 28-Nov-16.
  */
 public class CityMySQLDAO implements CityDAO {
+    private final String readStatement = "SELECT name FROM cities WHERE ID=?";
     private Connection connection;
-    private final String readStatement = "SELECT name FROM cities WHERE name=?";
 
     public CityMySQLDAO(Connection connection) {
         this.connection = connection;
     }
 
-    public City read(String key) throws PersistExeption {
+    public City read(Integer key) throws PersistExeption {
         PreparedStatement preparedStatement = null;
         try {
             preparedStatement = connection.prepareStatement(readStatement);
-            preparedStatement.setString(1, key);
+            preparedStatement.setInt(1, key);
             ResultSet resultSet = preparedStatement.executeQuery();
             City city = null;
             if (resultSet.next()) {
                 city = new City();
-                city.setId(resultSet.getString("name"));
+                city.setId(resultSet.getInt("ID"));
+                city.setName(resultSet.getString("name"));
             }
             return city;
         } catch (SQLException e) {
@@ -36,11 +37,11 @@ public class CityMySQLDAO implements CityDAO {
         }
     }
 
-    public void delete(String key) {
+    public void delete(Integer key) {
         throw new UnsupportedOperationException();
     }
 
-    public String create(City city) {
+    public Integer create(City city) {
         throw new UnsupportedOperationException();
     }
 
