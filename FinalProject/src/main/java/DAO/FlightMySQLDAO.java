@@ -13,8 +13,10 @@ import java.sql.SQLException;
 public class FlightMySQLDAO implements DAO<FlightEntity, String> {
     private Connection connection;
     private final String readStatement = "SELECT name,arrival,departure,flight_time,max_lagage_count FROM flight WHERE name=?";
+    private CityDAO cityDAO;
 
     public FlightMySQLDAO(CityDAO cityDAO,Connection connection) {
+        this.cityDAO=cityDAO;
         this.connection = connection;
     }
 
@@ -27,7 +29,10 @@ public class FlightMySQLDAO implements DAO<FlightEntity, String> {
             if (resultSet.next()) {
                 flightEntity = new FlightEntity();
                 flightEntity.setName(resultSet.getString("name"));
-                
+                flightEntity.setArrivalCity(cityDAO.read(resultSet.getString("arrival")));
+                flightEntity.setDepartureCity(cityDAO.read(resultSet.getString("departure")));
+                flightEntity.setFlightTime();
+                flightEntity.setMaxLagage(resultSet.getInt("max_lagage_count"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
