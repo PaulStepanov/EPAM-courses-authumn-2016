@@ -12,7 +12,7 @@ public class TimeParser {
         int hours = Integer.parseInt(elements[0]);
         int minutes = Integer.parseInt(elements[1]);
         int seconds = Integer.parseInt(elements[2]);
-        long miliseconds = hours * 3600000 + minutes * 60000 + seconds * 1000;
-        return new Duration(miliseconds);
+        long milliseconds = hours * 3600000 + minutes * 60000 + seconds * 1000;
+        return new Duration(milliseconds);
     }
 }
