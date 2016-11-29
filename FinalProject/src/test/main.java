@@ -2,9 +2,8 @@ package test;
 
 import DAO.CityMySQLDAO;
 import DAO.FlightMySQLDAO;
-import database.ConectionManager;
+import db.ConectionManager;
 import exeptions.PersistExeption;
-import parsers.TimeParser;
 
 /**
  * Created by Павел on 28-Nov-16.
