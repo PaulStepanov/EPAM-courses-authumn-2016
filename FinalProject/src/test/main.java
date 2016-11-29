@@ -1,12 +1,21 @@
 package test;
 
+import DAO.CityMySQLDAO;
+import DAO.FlightMySQLDAO;
+import database.ConectionManager;
+import exeptions.PersistExeption;
 import parsers.TimeParser;
 
 /**
  * Created by Павел on 28-Nov-16.
  */
 public class main {
-    public static void main(String... args) {
-        System.out.println(TimeParser.parseTimeToDuration("6:03:8").getStandardHours());
+    public static void main(String... args) throws PersistExeption {
+        ConectionManager conectionManager = new ConectionManager();
+        ;
+        CityMySQLDAO cityMySQLDAO = new CityMySQLDAO(conectionManager.getConnection());
+        cityMySQLDAO.read(1);
+        FlightMySQLDAO flightMySQLDAO = new FlightMySQLDAO(cityMySQLDAO,conectionManager.getConnection());
+        flightMySQLDAO.read(1);
     }
 }

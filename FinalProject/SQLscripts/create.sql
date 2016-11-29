@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `flight` (
   `ID`               INT         NOT NULL AUTO_INCREMENT UNIQUE ,
   `name`             VARCHAR(40) NOT NULL,
   `max_lagage_count` INT         NOT NULL,
-  `flight_time`      TIME(6)     NOT NULL,
+  `flight_time`      TIME     NOT NULL,
   `departure_ID`     INT         NOT NULL,
   `arrival_ID`       INT         NOT NULL,
   PRIMARY KEY (`ID`),

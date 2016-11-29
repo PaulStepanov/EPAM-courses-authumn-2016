@@ -12,7 +12,7 @@ import java.sql.SQLException;
  * Created by Павел on 28-Nov-16.
  */
 public class CityMySQLDAO implements CityDAO {
-    private final String readStatement = "SELECT name FROM cities WHERE ID=?";
+    private final String readStatement = "SELECT name,ID FROM cities WHERE ID=?";
     private Connection connection;
 
     public CityMySQLDAO(Connection connection) {
@@ -33,6 +33,7 @@ public class CityMySQLDAO implements CityDAO {
             }
             return city;
         } catch (SQLException e) {
+            e.printStackTrace();
             throw new PersistExeption();
         }
     }
