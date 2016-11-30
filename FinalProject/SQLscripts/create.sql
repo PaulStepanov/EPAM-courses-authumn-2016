@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `login`          VARCHAR(45) NOT NULL UNIQUE,
   `password`       VARCHAR(64) NOT NULL,
   `email`          VARCHAR(25) NOT NULL,
-  `priviliges_lvl` INT(1)      NOT NULL        DEFAULT '0',
+  `priviligesLvl` INT(1)      NOT NULL        DEFAULT '0',
   `ID`             INT         NOT NULL UNIQUE AUTO_INCREMENT,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC)
