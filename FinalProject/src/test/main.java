@@ -18,5 +18,7 @@ public class main {
         flightMySQLDAO.read(1);
         UserMySQLDAO userMySQLDAO = new UserMySQLDAO(conectionManager.getConnection());
         userMySQLDAO.read(3);
+        System.out.println(userMySQLDAO.read(3).getEmail());
+        System.out.println("hello");
     }
 }
