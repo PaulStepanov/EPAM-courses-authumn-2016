@@ -225,13 +225,13 @@ INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("F
 
 -- tickets
 
-INSERT INTO tickets(fly_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
+INSERT INTO tickets(flight_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
 VALUES (700,1,2,0,1);
-INSERT INTO tickets(fly_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
+INSERT INTO tickets(flight_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
 VALUES (500,2,2,0,1);
-INSERT INTO tickets(fly_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
+INSERT INTO tickets(flight_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
 VALUES (400,3,0,1,3);
-INSERT INTO tickets(fly_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
+INSERT INTO tickets(flight_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
 VALUES (500,4,2,0,4);
-INSERT INTO tickets(fly_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
+INSERT INTO tickets(flight_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
 VALUES (700,5,1,1,4);

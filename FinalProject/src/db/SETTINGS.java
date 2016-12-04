@@ -6,9 +6,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-/**
- * Created by Павел on 02-Sep-16.
- */
 public class SETTINGS {
     private static SETTINGS settings = new SETTINGS();
     private Properties propertie = new Properties();

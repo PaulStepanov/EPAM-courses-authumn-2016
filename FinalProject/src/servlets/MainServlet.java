@@ -1,37 +1,40 @@
 package servlets;
 
-import DAO.CityMySQLDAO;
-import DAO.FlightMySQLDAO;
-import DAO.UserMySQLDAO;
-import db.ConectionManager;
+import DAO.*;
+import db.ConnectionPoolManager;
 import exeptions.PersistExeption;
 
-import javax.jws.WebService;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Created by Павел on 30-Nov-16.
- */
-
 @WebServlet("/")
-public class MainServlet extends HttpServlet{
+public class MainServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("html");
-        PrintWriter write=response.getWriter();
-            ConectionManager conectionManager = new ConectionManager();
-            CityMySQLDAO cityMySQLDAO = new CityMySQLDAO(conectionManager.getConnection());
+        PrintWriter write = response.getWriter();
+        ConnectionPoolManager connectionPoolManager = new ConnectionPoolManager();
+        CityMySQLDAO cityMySQLDAO = new CityMySQLDAO(connectionPoolManager.getConnection());
         try {
             cityMySQLDAO.read(1);
-            FlightMySQLDAO flightMySQLDAO = new FlightMySQLDAO(cityMySQLDAO,conectionManager.getConnection());
-            flightMySQLDAO.read(1);
-            UserMySQLDAO userMySQLDAO = new UserMySQLDAO(conectionManager.getConnection());
+            FlightMySQLDAO flightMySQLDAO = new FlightMySQLDAO(cityMySQLDAO, connectionPoolManager.getConnection());
+            write.append(flightMySQLDAO.read(1).getFlightTime().toString());
+            UserMySQLDAO userMySQLDAO = new UserMySQLDAO(connectionPoolManager.getConnection());
             userMySQLDAO.read(3);
             write.append(userMySQLDAO.read(3).getLogin());
+            CurrentFlightMySQLDAO currentFlightMySQLDAO = new CurrentFlightMySQLDAO(flightMySQLDAO, connectionPoolManager.getConnection());
+            HttpSession session = request.getSession();
+            session.setAttribute("Login", "hi" + session.getId());
+            write.append(session.getAttribute("Login").toString() + "\n");
+            write.append(currentFlightMySQLDAO.read(2).getTicket_cost().toString() + "\n");
+            ClientMySQLDAO clientMySQLDAO = new ClientMySQLDAO(userMySQLDAO, connectionPoolManager.getConnection());
+            write.append(clientMySQLDAO.read(1).getName() + "\n");
+            TicketMySQLDAO ticketMySQLDAO = new TicketMySQLDAO(clientMySQLDAO, currentFlightMySQLDAO, connectionPoolManager.getConnection());
+            write.append(ticketMySQLDAO.read(2).getFlightCost().toString());
         } catch (PersistExeption throwables) {
             throwables.printStackTrace();
         }

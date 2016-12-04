@@ -8,9 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-/**
- * Created by root on 11/30/16.
- */
 public class UserMySQLDAO implements UserDAO {
     private Connection connection;
     private final String readStatement = "SELECT login,password,email,priviliges_lvl FROM `users` WHERE ID=?";
@@ -28,6 +25,7 @@ public class UserMySQLDAO implements UserDAO {
             User user = null;
             if (resultSet.next()) {
                 user = new User();
+                user.setId(key);
                 user.setLogin(resultSet.getString("login"));
                 user.setPassword(resultSet.getString("password"));
                 user.setEmail(resultSet.getString("email"));

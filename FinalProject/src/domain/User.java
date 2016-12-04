@@ -1,8 +1,5 @@
 package domain;
 
-/**
- * Created by root on 11/30/16.
- */
 public class User extends Entity {
     private String login;
     private String password;

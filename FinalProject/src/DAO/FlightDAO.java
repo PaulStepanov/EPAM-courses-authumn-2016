@@ -1,11 +1,7 @@
 package DAO;
 
-import domain.FlightEntity;
-import exeptions.PersistExeption;
+import domain.Flight;
 
-/**
- * Created by Павел on 28-Nov-16.
- */
-public interface FlightDAO  extends DAO<FlightEntity>{
+public interface FlightDAO  extends DAO<Flight>{
 }
 

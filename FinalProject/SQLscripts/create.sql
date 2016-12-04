@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `login`          VARCHAR(45) NOT NULL UNIQUE,
   `password`       VARCHAR(64) NOT NULL,
   `email`          VARCHAR(25) NOT NULL,
-  `priviligesLvl` INT(1)      NOT NULL        DEFAULT '0',
+  `priviliges_lvl` INT(1)      NOT NULL        DEFAULT '0',
   `ID`             INT         NOT NULL UNIQUE AUTO_INCREMENT,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `ID_UNIQUE` (`ID` ASC)
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `flight` (
 CREATE TABLE IF NOT EXISTS `current_flight` (
   `ID`          INT     NOT NULL AUTO_INCREMENT UNIQUE,
   `ticket_cost` INT(11) NOT NULL,
-  `date`        DATE    NOT NULL,
+  `date`        DATETIME(0)    NOT NULL,
   `lagage_cost` INT     NOT NULL,
   `flight_ID`   INT     NOT NULL,
   PRIMARY KEY (`ID`),
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `current_flight` (
 
 CREATE TABLE IF NOT EXISTS `tickets` (
   `ID`                INT(10) UNSIGNED NOT NULL AUTO_INCREMENT UNIQUE,
-  `fly_cost`          INT(11)          NOT NULL,
+  `flight_cost`          INT(11)          NOT NULL,
   `clients_users_ID`  INT              NOT NULL,
   `lagage_capacity`   INT              NULL     DEFAULT 0,
   `VIP`               TINYINT(1)       NULL     DEFAULT 0,

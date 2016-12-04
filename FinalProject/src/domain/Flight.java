@@ -2,10 +2,7 @@ package domain;
 
 import org.joda.time.Duration;
 
-/**
- * Created by Павел on 28-Nov-16.
- */
-public class FlightEntity extends Entity {
+public class Flight extends Entity {
     private String name;
     private City arrivalCity;
     private City departureCity;
