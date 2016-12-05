@@ -1,6 +1,6 @@
 package storage;
 
-import domain.Deritative;
+import model.domain.Deritative;
 
 public interface Storage {
     public void addDeritative(String name, Deritative deritative);

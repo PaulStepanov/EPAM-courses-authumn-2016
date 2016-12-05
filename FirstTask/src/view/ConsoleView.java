@@ -1,7 +1,7 @@
 package view;
 
-import domain.Deritative;
-import domain.Obligation;
+import model.domain.Deritative;
+import model.domain.Obligation;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
 package logic.filtration;
 
-import domain.Obligation;
+import model.domain.Obligation;
 
 public class PropertyFilter implements Filter {
     private int min;

@@ -1,6 +1,6 @@
 package logic.filtration;
 
-import domain.Obligation;
+import model.domain.Obligation;
 
 public class RiskFilter implements Filter {
     private double min;

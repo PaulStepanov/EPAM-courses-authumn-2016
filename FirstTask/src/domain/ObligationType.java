@@ -1,4 +1,4 @@
-package domain;
+package model.domain;
 
 public enum ObligationType {
     PERSONAL(5.0, 10000),

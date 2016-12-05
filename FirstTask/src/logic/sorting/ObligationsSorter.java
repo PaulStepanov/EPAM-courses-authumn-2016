@@ -1,6 +1,6 @@
 package logic.sorting;
 
-import domain.Obligation;
+import model.domain.Obligation;
 
 import java.util.Comparator;
 import java.util.List;

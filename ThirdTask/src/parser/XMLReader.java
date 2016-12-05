@@ -1,6 +1,6 @@
 package parser;
 
-import domain.Periodical;
+import model.domain.Periodical;
 
 import javax.xml.stream.XMLStreamException;
 import java.io.FileNotFoundException;

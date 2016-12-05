@@ -1,8 +1,8 @@
 package storage;
 
-import domain.Deritative;
-import domain.Obligation;
-import domain.ObligationType;
+import model.domain.Deritative;
+import model.domain.Obligation;
+import model.domain.ObligationType;
 
 import java.util.HashMap;
 

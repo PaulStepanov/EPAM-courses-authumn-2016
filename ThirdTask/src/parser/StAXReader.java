@@ -1,8 +1,8 @@
 package parser;
 
-import domain.Periodical;
-import domain.PeriodicalChars;
-import domain.PeriodicalType;
+import model.domain.Periodical;
+import model.domain.PeriodicalChars;
+import model.domain.PeriodicalType;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;

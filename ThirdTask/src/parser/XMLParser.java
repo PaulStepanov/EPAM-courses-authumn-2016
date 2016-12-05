@@ -1,6 +1,6 @@
 package parser;
 
-import domain.Periodical;
+import model.domain.Periodical;
 import validtion.XMLValidator;
 
 import javax.xml.stream.XMLStreamException;

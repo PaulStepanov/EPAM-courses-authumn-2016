@@ -1,7 +1,7 @@
 package test;
 
-import exeptions.PersistExeption;
-import parsers.DateTimeParser;
+import model.exeptions.PersistExeption;
+import model.parsers.DateTimeParser;
 
 /**
  * Created by Павел on 28-Nov-16.
@@ -17,6 +17,7 @@ public class main {
 //        userMySQLDAO.read(3);
 //        System.out.println(userMySQLDAO.read(3).getEmail());
 //        System.out.println("hello");
-        System.out.println(DateTimeParser.parse("2016-12-31 11:30:00"));;
+        System.out.println(DateTimeParser.parse("2016-12-31 11:30:00"));
+        ;
     }
 }

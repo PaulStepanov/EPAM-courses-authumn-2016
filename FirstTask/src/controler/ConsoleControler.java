@@ -1,6 +1,6 @@
 package controler;
 
-import domain.Deritative;
+import model.domain.Deritative;
 import logic.filtration.FiltratorImpl;
 import logic.filtration.PercentsFilter;
 import logic.filtration.PropertyFilter;
