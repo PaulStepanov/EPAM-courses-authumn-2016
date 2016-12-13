@@ -12,17 +12,15 @@ import java.io.IOException;
 
 /*TODO пофиксить костыль с сервлетом,ибо если оставить /то ресурсы из web папки не получаются,
 также*/
-@WebServlet("/l/*")
-public class MainServlet extends HttpServlet {
+//@WebServlet("/*")
+public class RestServlet extends HttpServlet {
+    private ControlerExecuter loginExec=new ControlerExecuter(new LoginControler());
     /*Testing*/
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        //TODO вынести след строку в инициализацию сервлета
-        ControlerExecuter loginExec=new ControlerExecuter(new LoginControler(), RouteMethod.GET);
         loginExec.initExecutor(request,response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        ControlerExecuter loginExec=new ControlerExecuter(new LoginControler(), RouteMethod.POST);
         loginExec.initExecutor(request,response);
     }
 }

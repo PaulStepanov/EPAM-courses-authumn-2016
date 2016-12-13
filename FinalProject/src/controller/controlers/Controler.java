@@ -1,17 +1,28 @@
 package controller.controlers;
 
 import controller.controlers.routes.Route;
+import controller.controlers.routes.RouteMethod;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public abstract class Controler {
-    ArrayList<Route> routings=new ArrayList<>();
+    HashMap<RouteMethod,HashMap> routings=new HashMap<>();
 
-    public void addRoute(Route route) {
-        routings.add(route);
+    public Controler() {
+        routings.put(RouteMethod.GET,new HashMap<String,Route>());
+        routings.put(RouteMethod.POST,new HashMap<String,Route>());
+        routings.put(RouteMethod.UPDATE,new HashMap<String,Route>());
+        routings.put(RouteMethod.DELETE,new HashMap<String,Route>());
+        routings.put(RouteMethod.ALL,new HashMap<String,Route>());
     }
 
-    public ArrayList<Route> getRoutings() {
+    public void addRoute(Route route) {
+        HashMap<String,Route> routMap=routings.get(route.getMethod());
+        routMap.put(route.getURI(),route);
+    }
+
+    public  HashMap<RouteMethod,HashMap> getRoutings() {
         return routings;
     }
 }

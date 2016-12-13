@@ -1,12 +1,3 @@
-/* #####################################################################
- #
- #   Project       : Modal Login with jQuery Effects
- #   Author        : Rodrigo Amarante (rodrigockamarante)
- #   Version       : 1.0
- #   Created       : 07/29/2015
- #   Last Change   : 08/04/2015
- #
- ##################################################################### */
 
 
 $("#SignUpButton").click(function () {
@@ -36,14 +27,14 @@ $(function () {
             case "login-form":
                 var $lg_username = $('#login_username').val();
                 var $lg_password = $('#login_password').val();
-                $.post("/l/login", $("#login-form").serialize(), function (resp) {
+                $.post("/rest/login", $("#login-form").serialize(), function (resp) {
                     if (resp != "signed") {
                         msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");
                     } else {
                         msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "success", "glyphicon-ok", "Login OK");
                         setTimeout(function () {
                             location.reload();
-                        }, 100);
+                        }, 300);
                     }
                 });
 
