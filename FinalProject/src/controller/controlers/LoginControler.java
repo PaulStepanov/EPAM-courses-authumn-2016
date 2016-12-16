@@ -33,6 +33,11 @@ public class LoginControler extends Controler {
                                 }
                             }
                 }));
+        this.addRoute(
+                new Route(RouteMethod.GET,
+                        "/logout",
+                        (request, response) -> request.getSession().setAttribute("user",null)
+                ));
     }
 
 }

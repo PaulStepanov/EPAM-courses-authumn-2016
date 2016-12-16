@@ -12,6 +12,12 @@ $("#SingInButton").click(function () {
         $("#register-form").css("display", "none");
     }
 });
+
+$("#LogOutButton").click(function () {
+    $.get("/rest/logout",function () {
+        location.reload();
+    })
+});
 $(function () {
 
     var $formLogin = $('#login-form');

@@ -4,6 +4,7 @@
 <%@tag language="java" pageEncoding="UTF-8"%>
 <%--<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
 
+<%--<%User user= (User) session.getAttribute("user");%>--%>
 <html>
 <body>
 <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
@@ -120,7 +121,8 @@
                 </c:if>
 
                 <c:if test="${not empty user}">
-
+                    <button type="button" class="btn btn-link btn-lg">${user.getLogin()}</button>
+                    <button id="LogOutButton" type="button" class="btn btn-default">Log out</button>
                 </c:if>
             </div>
         </div>
