@@ -4,7 +4,7 @@ public class Ticket extends Entity {
     private Integer flightCost;
     private Client client;
     private Integer lagageCapacity;
-    private Boolean vip;
+    private Boolean vip=false;
     private CurrentFlight currentFlight;
 
     public Integer getFlightCost() {

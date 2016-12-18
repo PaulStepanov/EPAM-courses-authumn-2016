@@ -121,7 +121,18 @@
                 </c:if>
 
                 <c:if test="${not empty user}">
-                    <button type="button" class="btn btn-link btn-lg">${user.getLogin()}</button>
+                    <!-- Single button -->
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                ${user.getLogin()}
+                                    <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">MyProfile</a></li>
+                            <li><a href="#">Tickets</a></li>
+                        </ul>
+                    </div>
                     <button id="LogOutButton" type="button" class="btn btn-default">Log out</button>
                 </c:if>
             </div>

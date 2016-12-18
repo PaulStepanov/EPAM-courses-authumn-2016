@@ -16,6 +16,25 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
+
+    <filter>
+        <filter-name>LogFilter</filter-name>
+        <filter-class>controller.controlers.filters.LogFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LogFilter</filter-name>
+        <servlet-name>rest</servlet-name>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>EncodingFilter</filter-name>
+        <filter-class>controller.controlers.filters.EncodingFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>EncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
     <servlet>
         <servlet-name>default</servlet-name>
         <servlet-class>
@@ -36,6 +55,7 @@
         <url-pattern>/static/*</url-pattern>
     </servlet-mapping>
 
+
     <servlet>
         <servlet-name>rest</servlet-name>
         <servlet-class>controller.servlets.RestServlet</servlet-class>
@@ -44,9 +64,19 @@
         <servlet-name>rest</servlet-name>
         <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>HttpServlet</servlet-name>
+        <servlet-class>controller.servlets.HtmlServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HttpServlet</servlet-name>
+        <url-pattern>/html/*</url-pattern>
+    </servlet-mapping>
 
     <session-config>
         <session-timeout>100</session-timeout>
     </session-config>
 
+    
 </web-app>
