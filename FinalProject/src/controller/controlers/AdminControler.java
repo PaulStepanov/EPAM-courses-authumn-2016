@@ -12,14 +12,11 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by frees on 16.12.2016.
- */
-public class TicketsControler extends Controler {
-    public TicketsControler() {
+public class AdminControler extends Controler {
+    public AdminControler() {
         super();
         this.addRoute(new Route(RouteMethod.GET,
-                "/ticketsAll",
+                "/admin/ticketsAll",
                 (request, response) -> {
                     RequestDispatcher ticketsDispatcher = request.getServletContext().getRequestDispatcher("/ticketsAll.jsp");
                     TicketService ticketService = new TicketServiceImpl(new ConnectionPoolManager());
@@ -33,6 +30,5 @@ public class TicketsControler extends Controler {
                         e.printStackTrace();
                     }
                 }));
-
     }
 }

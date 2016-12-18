@@ -18,8 +18,7 @@
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li ><a href="#">Tickets </a></li>
-                <li ><a href="#">Flights </a></li>
+                <li ><a href="/html/flights">Flights </a></li>
                 <li ><a href="#">About us </a></li>
             </ul>
             <div class="navbar-form navbar-right">
@@ -130,7 +129,15 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#">MyProfile</a></li>
-                            <li><a href="#">Tickets</a></li>
+                            <li><a href="#">My Tickets</a></li>
+                            <c:if test="${user.getPriviligesLvl()==2}">
+                                <li role="separator" class="divider">admin</li>
+                                <li><a href="/html/admin/ticketsAll">All Tickets</a></li>
+                            </c:if>
+                            <c:if test="${user.getPriviligesLvl()>=1}">
+                                <li role="separator" class="divider">moderator</li>
+                                <li><a href="/html/admin/ticketsAll">Avaliable Tickets</a></li>
+                            </c:if>
                         </ul>
                     </div>
                     <button id="LogOutButton" type="button" class="btn btn-default">Log out</button>

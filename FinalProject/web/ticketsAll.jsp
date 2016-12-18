@@ -28,14 +28,14 @@
                 <th>Client name</th>
                 <th>Client surname</th>
             </tr>
-            <c:forEach items="${tickets}" var="ticket" >
+            <c:forEach items="${tickets}" var="flight" >
                 <tr>
-                    <th>${ticket.getCurrentFlight().getFlight().getName()}t</th>
-                    <th>${ticket.getFlightCost()}</th>
-                    <th>${ticket.getFlightCost()}</th>
-                    <th>${ticket.getVip()}</th>
-                    <th>${ticket.getClient().getName()}</th>
-                    <th>${ticket.getClient().getSurname()}</th>
+                    <th>${flight.getCurrentFlight().getFlight().getName()}</th>
+                    <th>${flight.getFlightCost()}</th>
+                    <th>${flight.getFlightCost()}</th>
+                    <th>${flight.getVip()}</th>
+                    <th>${flight.getClient().getName()}</th>
+                    <th>${flight.getClient().getSurname()}</th>
                 </tr>
             </c:forEach>
         </table>

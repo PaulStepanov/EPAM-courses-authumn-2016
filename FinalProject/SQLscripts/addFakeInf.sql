@@ -122,7 +122,8 @@ INSERT INTO users(`login`,`password`,email,ID) VALUES ("Aaron81","mghW1nVSfcGNTB
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Elroy57","hfiCTTkXI_uXv7s","QfTuWq9AkmSgN6Q",97);
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Eldridge_Greenfelder16","cGcpWee1dzlD1LC","FlJzizAhEEhxabD",98);
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Guy_King","fROPIvLSVwNhnN1","9yEZFtsAJmHJM4m",99);
-INSERT INTO users(`login`,`password`,email,ID) VALUES ("test","test","9yEZFtsAJmHJM4m",100);
+INSERT INTO users(`login`,`password`,email) VALUES ("test","test","9yEZFtsAJmHJM4m");
+INSERT INTO users(`login`,`password`,email,priviliges_lvl) VALUES ("admin","admin","9yEZFtsAJmHJM4m",2);
 -- clients
 INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("Itzel","Bergstrom","Heaney","814-181-8828",1);
 INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("Domingo","Olson","Berge","799-967-5464",2);

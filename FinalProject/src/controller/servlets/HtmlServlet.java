@@ -1,8 +1,8 @@
 package controller.servlets;
 
+import controller.controlers.AdminControler;
 import controller.controlers.ControlerExecuter;
-import controller.controlers.LoginControler;
-import controller.controlers.TicketsControler;
+import controller.controlers.FlightControler;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,12 +14,17 @@ import java.io.IOException;
  */
 
 public class HtmlServlet extends HttpServlet {
-    private ControlerExecuter loginExec=new ControlerExecuter(new TicketsControler());
+    private ControlerExecuter loginExec=new ControlerExecuter(new AdminControler());
+    private ControlerExecuter flightExec=new ControlerExecuter(new FlightControler());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        flightExec.initExecutor(request,response);
+        loginExec.setPrivilegeLvl(2);
         loginExec.initExecutor(request,response);
+        //TODO page not found it's a bug
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
+        loginExec.setPrivilegeLvl(2);
         loginExec.initExecutor(request,response);
     }
 }
