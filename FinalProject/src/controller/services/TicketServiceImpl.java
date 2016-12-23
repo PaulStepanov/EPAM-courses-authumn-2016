@@ -3,8 +3,10 @@ package controller.services;
 import model.DAO.*;
 import model.db.ConnectionManager;
 import model.domain.Ticket;
+import model.domain.User;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class TicketServiceImpl implements TicketService {
@@ -13,16 +15,23 @@ public class TicketServiceImpl implements TicketService {
 
     public TicketServiceImpl(ConnectionManager connectionManag) {
         this.connectionManager = connectionManag;
-        Connection connection = connectionManager.getConnection();
-        UserDAO userDAO = new UserMySQLDAO(connection);
-        ClientDAO clientDAO = new ClientMySQLDAO(userDAO, connection);
-        CityDAO cityDAO = new CityMySQLDAO(connection);
-        FlightDAO flightDAO = new FlightMySQLDAO(cityDAO, connection);
-        CurrentFlightDao currentFlight = new CurrentFlightMySQLDAO(flightDAO, connection);
-        this.ticketDAO = new TicketMySQLDAO(clientDAO, currentFlight, connection);
+        this.ticketDAO = (TicketDAO) FabrikMySQLDAO.getDAO(TicketDAO.class);
     }
 
     public List<Ticket> findAll() {
-        return ticketDAO.findAll();
+        Connection connection= connectionManager.getConnection();
+        ticketDAO.setConnection(connection);
+        List<Ticket> result=ticketDAO.findAll();
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public List<Ticket> findByUser(User user) {
+        return null;
     }
 }

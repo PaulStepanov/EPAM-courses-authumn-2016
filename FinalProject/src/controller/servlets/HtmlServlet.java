@@ -18,13 +18,11 @@ public class HtmlServlet extends HttpServlet {
     private ControlerExecuter flightExec=new ControlerExecuter(new FlightControler());
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         flightExec.initExecutor(request,response);
-        loginExec.setPrivilegeLvl(2);
         loginExec.initExecutor(request,response);
         //TODO page not found it's a bug
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        loginExec.setPrivilegeLvl(2);
         loginExec.initExecutor(request,response);
     }
 }

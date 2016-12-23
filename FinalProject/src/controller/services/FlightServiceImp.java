@@ -1,13 +1,11 @@
 package controller.services;
 
-import model.DAO.CityDAO;
-import model.DAO.CityMySQLDAO;
-import model.DAO.FlightDAO;
-import model.DAO.FlightMySQLDAO;
+import model.DAO.*;
 import model.db.ConnectionManager;
 import model.domain.Flight;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 public class FlightServiceImp implements FlightService {
@@ -15,14 +13,20 @@ public class FlightServiceImp implements FlightService {
     ConnectionManager connectionManager;
 
     public FlightServiceImp(ConnectionManager connectionManager) {
+        flightDAO= (FlightDAO) new FabrikMySQLDAO().createDAO(FlightDAO.class);
         this.connectionManager = connectionManager;
-        Connection connection = connectionManager.getConnection();
-        CityDAO cityDAO = new CityMySQLDAO(connection);
-        this.flightDAO= new FlightMySQLDAO(cityDAO,connection);
-    }
+        }
 
     @Override
     public List<Flight> findAll() {
-        return flightDAO.findAll();
+        Connection connection = connectionManager.getConnection();
+        flightDAO.setConnection(connection);
+        List<Flight> result=flightDAO.findAll();
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 }

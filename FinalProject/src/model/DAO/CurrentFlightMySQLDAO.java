@@ -19,6 +19,17 @@ public class CurrentFlightMySQLDAO implements CurrentFlightDao {
         this.connection = connection;
     }
 
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+        flightDAO.setConnection(connection);
+        this.connection = connection;
+    }
+
     public CurrentFlight read(Integer key) throws PersistExeption {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(readStatement);
@@ -33,6 +44,7 @@ public class CurrentFlightMySQLDAO implements CurrentFlightDao {
                 currentFlight.setLagageCost(resultSet.getInt("lagage_cost"));
                 currentFlight.setFlight(flightDAO.read(resultSet.getInt("flight_ID")));
             }
+
             return currentFlight;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -51,4 +63,5 @@ public class CurrentFlightMySQLDAO implements CurrentFlightDao {
     public void update(CurrentFlight currentFlight) throws PersistExeption {
 
     }
+
 }

@@ -21,10 +21,11 @@ public class ControlerExecuter {
     private Controler controler;
     private RouteMethod method;
     private ArrayList<Route> routes = new ArrayList<>();
-    private Integer privilegeLvl=-1;//not logged
+    private Integer privilegeLvl;//not logged
 
     public ControlerExecuter(Controler controler) {
         this.controler = controler;
+        this.privilegeLvl=controler.getPrivilegeLvl();
     }
 
     public void initExecutor(HttpServletRequest request, HttpServletResponse response) {
@@ -33,7 +34,7 @@ public class ControlerExecuter {
         HashMap<String,Route> routMap=routings.get(
                 RouteMethod.valueOf(request.getMethod()));
         routMap.forEach((uri, route) -> {
-            if (route.getURI().equals(request.getPathInfo())) {// TODO написать функцию обрабатывающую URL
+            if (route.getURI().equals(request.getPathInfo())) {// TODO написать функцию обрабатывающую URL и ошибкт
                 if (checkPrivilegeLvl((User) request.getSession().getAttribute("user"))) {
                     route.getRoutingFunction().exec(request, response);
                 } else {
@@ -49,12 +50,12 @@ public class ControlerExecuter {
             }
         });
     }
-    public  void setPrivilegeLvl(Integer privilegeLvl) {
-        this.privilegeLvl=privilegeLvl;
-    }
     private boolean checkPrivilegeLvl(User user){
         if (user==null && privilegeLvl==-1) {
             return true;
+        }
+        if (user==null && privilegeLvl!=-1) {
+            return false;
         }
         if (user.getPriviligesLvl()>=privilegeLvl) {
             return true;

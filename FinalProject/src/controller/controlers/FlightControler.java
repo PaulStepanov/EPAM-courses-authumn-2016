@@ -2,7 +2,9 @@ package controller.controlers;
 
 import controller.controlers.routes.Route;
 import controller.controlers.routes.RouteMethod;
+import controller.services.FlightService;
 import controller.services.FlightServiceImp;
+import controller.services.ServiceManager;
 import model.db.ConnectionPoolManager;
 import model.domain.Flight;
 
@@ -18,8 +20,8 @@ public class FlightControler extends Controler{
                 "/flights",
                 (request, response) -> {
                     RequestDispatcher flightsDispatcher = request.getServletContext().getRequestDispatcher("/flights.jsp");
-                    FlightServiceImp flightServiceImp= new FlightServiceImp(new ConnectionPoolManager());
-                    ArrayList<Flight> flights = (ArrayList<Flight>) flightServiceImp.findAll();
+                    FlightService flightService= (FlightService) ServiceManager.getService(FlightService.class);
+                    ArrayList<Flight> flights = (ArrayList<Flight>) flightService.findAll();
                     request.setAttribute("flights", flights);
                     try {
                         flightsDispatcher.forward(request,response);

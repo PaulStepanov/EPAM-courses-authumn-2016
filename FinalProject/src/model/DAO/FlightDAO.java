@@ -4,7 +4,7 @@ import model.domain.Flight;
 
 import java.util.List;
 
-public interface FlightDAO extends DAO<Flight> {
+public interface FlightDAO extends DBDAO<Flight> {
     public List<Flight> findAll();
 }
 

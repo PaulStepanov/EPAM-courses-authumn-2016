@@ -17,7 +17,6 @@ public class FlightMySQLDAO implements FlightDAO {
         this.cityDAO = cityDAO;
         this.connection = connection;
     }
-
     public Flight read(Integer key) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(readStatement);
@@ -81,5 +80,16 @@ public class FlightMySQLDAO implements FlightDAO {
             e.printStackTrace();
         }
         return flight;
+    }
+
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+        this.cityDAO.setConnection(connection);
+        this.connection = connection;
     }
 }

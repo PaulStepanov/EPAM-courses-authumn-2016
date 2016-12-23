@@ -46,4 +46,15 @@ public class CityMySQLDAO implements CityDAO {
     public void update(City city) {
         throw new UnsupportedOperationException();
     }
+
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+
+        this.connection = connection;
+    }
 }

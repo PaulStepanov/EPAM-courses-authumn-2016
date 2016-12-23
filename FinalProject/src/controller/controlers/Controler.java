@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public abstract class Controler {
     HashMap<RouteMethod,HashMap> routings=new HashMap<>();
+    private Integer privilegeLvl=-1;
 
     public Controler() {
         routings.put(RouteMethod.GET,new HashMap<String,Route>());
@@ -15,6 +16,18 @@ public abstract class Controler {
         routings.put(RouteMethod.UPDATE,new HashMap<String,Route>());
         routings.put(RouteMethod.DELETE,new HashMap<String,Route>());
         routings.put(RouteMethod.ALL,new HashMap<String,Route>());
+    }
+
+    public void setRoutings(HashMap<RouteMethod, HashMap> routings) {
+        this.routings = routings;
+    }
+
+    public Integer getPrivilegeLvl() {
+        return privilegeLvl;
+    }
+
+    public void setPrivilegeLvl(Integer privilegeLvl) {
+        this.privilegeLvl = privilegeLvl;
     }
 
     public void addRoute(Route route) {

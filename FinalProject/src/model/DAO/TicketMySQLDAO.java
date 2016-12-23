@@ -84,4 +84,16 @@ public class TicketMySQLDAO implements TicketDAO {
         }
         return ticket;
     }
+
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+        this.clientDAO.setConnection(connection);
+        this.currentFlightDao.setConnection(connection);
+        this.connection = connection;
+    }
 }

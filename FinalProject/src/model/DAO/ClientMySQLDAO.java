@@ -17,6 +17,20 @@ public class ClientMySQLDAO implements ClientDAO {
         this.userDAO = userDAO;
         this.connection = connection;
     }
+    public ClientMySQLDAO(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+        userDAO.setConnection(connection);
+        this.connection = connection;
+    }
 
     public Client read(Integer key) throws PersistExeption {
         PreparedStatement preparedStatement = null;
@@ -35,6 +49,7 @@ public class ClientMySQLDAO implements ClientDAO {
                 client.setUser(userDAO.read(key));
             }
             return client;
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -52,4 +67,5 @@ public class ClientMySQLDAO implements ClientDAO {
     public void update(Client client) throws PersistExeption {
 
     }
+
 }

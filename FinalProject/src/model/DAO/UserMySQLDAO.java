@@ -66,4 +66,14 @@ public class UserMySQLDAO implements UserDAO {
         }
         return null;
     }
+
+    @Override
+    public Connection getConnection() {
+        return connection;
+    }
+
+    @Override
+    public void setConnection(Connection connection) {
+        this.connection = connection;
+    }
 }
