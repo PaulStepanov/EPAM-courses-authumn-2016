@@ -11,7 +11,6 @@ import controller.services.TicketService;
 public class UserControler extends Controler {
     public UserControler() {
         super();
-        super.setPrivilegeLvl(0);
         super.addRoute(new Route(RouteMethod.GET,
                 "/user/tickets",
                 (request, response) -> {

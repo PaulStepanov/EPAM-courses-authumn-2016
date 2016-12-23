@@ -1,6 +1,7 @@
 package controller.services;
 
-import model.DAO.*;
+import model.DAO.FabrikMySQLDAO;
+import model.DAO.TicketDAO;
 import model.db.ConnectionManager;
 import model.domain.Ticket;
 import model.domain.User;

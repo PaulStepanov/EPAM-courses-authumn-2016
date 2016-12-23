@@ -3,9 +3,7 @@ package controller.controlers;
 import controller.controlers.routes.Route;
 import controller.controlers.routes.RouteMethod;
 import controller.services.FlightService;
-import controller.services.FlightServiceImp;
 import controller.services.ServiceManager;
-import model.db.ConnectionPoolManager;
 import model.domain.Flight;
 
 import javax.servlet.RequestDispatcher;
@@ -25,9 +23,7 @@ public class FlightControler extends Controler{
                     request.setAttribute("flights", flights);
                     try {
                         flightsDispatcher.forward(request,response);
-                    } catch (ServletException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (ServletException | IOException e) {
                         e.printStackTrace();
                     }
                 }));

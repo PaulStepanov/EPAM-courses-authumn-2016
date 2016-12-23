@@ -4,8 +4,6 @@ import controller.controlers.routes.Route;
 import controller.controlers.routes.RouteMethod;
 import controller.services.ServiceManager;
 import controller.services.TicketService;
-import controller.services.TicketServiceImpl;
-import model.db.ConnectionPoolManager;
 import model.domain.Ticket;
 
 import javax.servlet.RequestDispatcher;
@@ -16,7 +14,6 @@ import java.util.ArrayList;
 public class AdminControler extends Controler {
     public AdminControler() {
         super();
-        this.setPrivilegeLvl(2);
         this.addRoute(new Route(RouteMethod.GET,
                 "/admin/ticketsAll",
                 (request, response) -> {
@@ -26,9 +23,7 @@ public class AdminControler extends Controler {
                     request.setAttribute("tickets", tickets);
                     try {
                         ticketsDispatcher.forward(request, response);
-                    } catch (ServletException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (ServletException | IOException e) {
                         e.printStackTrace();
                     }
                 }));

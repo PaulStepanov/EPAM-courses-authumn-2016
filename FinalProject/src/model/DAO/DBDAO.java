@@ -1,7 +1,6 @@
 package model.DAO;
 
 import model.domain.Entity;
-import model.exeptions.PersistExeption;
 
 import java.sql.Connection;
 

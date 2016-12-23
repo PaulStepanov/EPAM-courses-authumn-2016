@@ -1,6 +1,7 @@
 package controller.services;
 
-import model.DAO.*;
+import model.DAO.FabrikMySQLDAO;
+import model.DAO.FlightDAO;
 import model.db.ConnectionManager;
 import model.domain.Flight;
 

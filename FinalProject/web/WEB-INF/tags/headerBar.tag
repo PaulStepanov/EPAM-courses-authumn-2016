@@ -26,7 +26,6 @@
                 <%--<c:if test='${request.getSession().getAttribute("user")==null}'>--%>
                 <%--jsp:useBean id="user" scope="session" type="model.domain.User"/--%>
                 <c:if test="${empty user}">
-                    <% System.out.println(request.getSession().getAttribute("user"));%>
                     <button id="SingInButton" type="button" class="btn btn-default" data-toggle="modal" data-target="#login-modal">Login</button>
                     <!-- BEGIN # MODAL LOGIN -->
                     <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">

@@ -1,10 +1,7 @@
 package test;
 
 import model.DAO.FabrikMySQLDAO;
-import model.DAO.FlightDAO;
 import model.DAO.TicketDAO;
-import model.DAO.UserDAO;
-import model.domain.CurrentFlight;
 
 /**
  * Created by frees on 21.12.2016.

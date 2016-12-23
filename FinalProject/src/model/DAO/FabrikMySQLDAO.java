@@ -1,8 +1,5 @@
 package model.DAO;
 
-import model.db.ConnectionPoolManager;
-import model.domain.CurrentFlight;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -16,7 +13,6 @@ public class FabrikMySQLDAO {
     private HashMap<Class, Class> validationMap = new HashMap<>();
 
     public FabrikMySQLDAO() {
-        //Добавить кэширование чрез мапу
         validationMap.put(CityDAO.class,CityMySQLDAO.class);
         validationMap.put(ClientDAO.class,ClientMySQLDAO.class);
         validationMap.put(CurrentFlightDao.class,CurrentFlightMySQLDAO.class);
@@ -41,13 +37,10 @@ public class FabrikMySQLDAO {
                     param=createDAO(parmTypes[i]);
                     concreteParams.add(param);
                 }
-            } catch (NoSuchMethodException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (InvocationTargetException e) {
+            } catch (NoSuchMethodException
+                    | InvocationTargetException
+                    | InstantiationException
+                    | IllegalAccessException e) {
                 e.printStackTrace();
             }
         }

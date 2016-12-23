@@ -1,6 +1,5 @@
 package controller.controlers.filters;
 
-import com.sun.deploy.net.HttpRequest;
 import model.logger.Log4jLogger;
 
 import javax.servlet.*;

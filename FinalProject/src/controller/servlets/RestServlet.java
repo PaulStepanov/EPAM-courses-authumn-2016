@@ -2,9 +2,7 @@ package controller.servlets;
 
 import controller.controlers.ControlerExecuter;
 import controller.controlers.LoginControler;
-import controller.controlers.routes.RouteMethod;
 
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

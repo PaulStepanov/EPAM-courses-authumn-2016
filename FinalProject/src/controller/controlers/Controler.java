@@ -3,12 +3,10 @@ package controller.controlers;
 import controller.controlers.routes.Route;
 import controller.controlers.routes.RouteMethod;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public abstract class Controler {
     HashMap<RouteMethod,HashMap> routings=new HashMap<>();
-    private Integer privilegeLvl=-1;
 
     public Controler() {
         routings.put(RouteMethod.GET,new HashMap<String,Route>());
@@ -20,14 +18,6 @@ public abstract class Controler {
 
     public void setRoutings(HashMap<RouteMethod, HashMap> routings) {
         this.routings = routings;
-    }
-
-    public Integer getPrivilegeLvl() {
-        return privilegeLvl;
-    }
-
-    public void setPrivilegeLvl(Integer privilegeLvl) {
-        this.privilegeLvl = privilegeLvl;
     }
 
     public void addRoute(Route route) {

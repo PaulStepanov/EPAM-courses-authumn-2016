@@ -8,8 +8,8 @@
             maxIdle="100"
             maxWait="10"
             username="root"
-            password=""
+            password="83106495fF"
             driverClassName="com.mysql.jdbc.Driver"
-            url="jdbc:mysql://localhost:3306/low cost-airline"
+            url="jdbc:mysql://localhost:3306/new_schema"
     />
 </Context>

@@ -2,7 +2,6 @@ package controller.services;
 
 import model.DAO.FabrikMySQLDAO;
 import model.DAO.UserDAO;
-import model.DAO.UserMySQLDAO;
 import model.db.ConnectionManager;
 import model.domain.User;
 
