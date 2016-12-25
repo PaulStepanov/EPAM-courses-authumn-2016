@@ -23,16 +23,14 @@
                 <th>Arrival</th>
                 <th>Departure</th>
                 <th>FlightTime</th>
-                <th>Max lagage</th>
             </tr>
-            <c:forEach items="${flights}" var="flight">
+            <c:forEach items="${flights}" var="ticket">
                 <tr>
-                    <th>${flight.getName()}</th>
-                    <th>${flight.getArrivalCity().getName()}</th>
-                    <th>${flight.getDepartureCity().getName()}</th>
-                    <%--TODO сделать норм--%>
-                    <th>${flight.getFlightTime()}</th>
-                    <th>${flight.getMaxLagage()}</th>
+                    <th>${ticket.getName()}</th>
+                    <th>${ticket.getArrivalCity().getName()}</th>
+                    <th>${ticket.getDepartureCity().getName()}</th>
+                    <%--Форматирование--%>
+                    <th>${DurationParser.parseDuration(ticket.getFlightTime())}</th>
                 </tr>
             </c:forEach>
         </table>

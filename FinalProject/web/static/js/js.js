@@ -31,8 +31,6 @@ $(function () {
     $("form").submit(function () {
         switch (this.id) {
             case "login-form":
-                var $lg_username = $('#login_username').val();
-                var $lg_password = $('#login_password').val();
                 $.post("/rest/login", $("#login-form").serialize(), function (resp) {
                     if (resp != "signed") {
                         msgChange($('#div-login-msg'), $('#icon-login-msg'), $('#text-login-msg'), "error", "glyphicon-remove", "Login error");

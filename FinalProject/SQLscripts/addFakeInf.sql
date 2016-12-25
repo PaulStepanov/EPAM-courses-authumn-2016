@@ -122,8 +122,9 @@ INSERT INTO users(`login`,`password`,email,ID) VALUES ("Aaron81","mghW1nVSfcGNTB
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Elroy57","hfiCTTkXI_uXv7s","QfTuWq9AkmSgN6Q",97);
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Eldridge_Greenfelder16","cGcpWee1dzlD1LC","FlJzizAhEEhxabD",98);
 INSERT INTO users(`login`,`password`,email,ID) VALUES ("Guy_King","fROPIvLSVwNhnN1","9yEZFtsAJmHJM4m",99);
-INSERT INTO users(`login`,`password`,email) VALUES ("test","test","9yEZFtsAJmHJM4m");
+INSERT INTO users(`login`,`password`,email,priviliges_lvl) VALUES ("test","test","9yEZFtsAJmHJM4m",0);
 INSERT INTO users(`login`,`password`,email,priviliges_lvl) VALUES ("admin","admin","9yEZFtsAJmHJM4m",2);
+INSERT INTO users(`login`,`password`,email,priviliges_lvl) VALUES ("moder","moder","9yEZFtsAJmHJM4m",1);
 -- clients
 INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("Itzel","Bergstrom","Heaney","814-181-8828",1);
 INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("Domingo","Olson","Berge","799-967-5464",2);
@@ -224,6 +225,9 @@ INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("C
 INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("Kendrick","Harvey","Grimes","099-158-4038",97);
 INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("Winfield","Hintz","Corkery","439-609-4032",98);
 INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("Furman","Price","Runolfsson","165-344-5036",99);
+INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("user","user","Runolfsson","165-344-5036",100);
+INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("admin","admin","Runolfsson","165-344-5036",101);
+INSERT INTO clients(`name`,`surname`,`patronymic`,`phone`,`users_ID`) VALUES ("moderator","moderator","Runolfsson","165-344-5036",102);
 
 -- tickets
 
@@ -237,3 +241,6 @@ INSERT INTO tickets(flight_cost, clients_users_ID, lagage_capacity, VIP, current
 VALUES (500,4,2,0,4);
 INSERT INTO tickets(flight_cost, clients_users_ID, lagage_capacity, VIP, current_flight_ID)
 VALUES (700,5,1,1,4);
+INSERT INTO `tickets` (`ID`, `flight_cost`, `clients_users_ID`, `lagage_capacity`, `VIP`, `current_flight_ID`)
+VALUES ('6', '400', '100', '1', '1', '3');
+

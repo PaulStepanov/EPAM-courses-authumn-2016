@@ -7,8 +7,8 @@
 <%--<%User user= (User) session.getAttribute("user");%>--%>
 <html>
 <body>
-<link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+<link rel="stylesheet" type="text/css" href="${request.getHeader("Host")}/static/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="${request.getHeader("Host")}/static/css/style.css">
 
 <div class="navbar navbar-inverse">
     <div class="container">
@@ -17,8 +17,9 @@
         </div>
         <div class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li ><a href="/html/flights">Flights </a></li>
+                <li class="active"><a href="${request.getHeader("Host")}/">Home</a></li>
+                <li ><a href="${request.getHeader("Host")}/html/flights">Flights </a></li>
+                <li ><a href="${request.getHeader("Host")}/html/availableFlights">Buy ticket </a></li>
                 <li ><a href="#">About us </a></li>
             </ul>
             <div class="navbar-form navbar-right">
@@ -128,14 +129,10 @@
                         </button>
                         <ul class="dropdown-menu">
                             <li><a href="#">MyProfile</a></li>
-                            <li><a href="#">My Tickets</a></li>
+                            <li><a href="${request.getHeader("Host")}/html/user/tickets">My Tickets</a></li>
                             <c:if test="${user.getPriviligesLvl()==2}">
                                 <li role="separator" class="divider">admin</li>
-                                <li><a href="/html/admin/ticketsAll">All Tickets</a></li>
-                            </c:if>
-                            <c:if test="${user.getPriviligesLvl()>=1}">
-                                <li role="separator" class="divider">moderator</li>
-                                <li><a href="/html/admin/ticketsAll">Avaliable Tickets</a></li>
+                                <li><a href="${request.getHeader("Host")}/html/admin/ticketsAll">All Tickets</a></li>
                             </c:if>
                         </ul>
                     </div>
@@ -153,7 +150,7 @@
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
-<script src="/static/js/bootstrap.js"></script>
-<script src="/static/js/js.js"></script>
+<script src="${request.getHeader("Host")}/static/js/bootstrap.js"></script>
+<script src="${request.getHeader("Host")}/static/js/js.js"></script>
 </body>
 </html>

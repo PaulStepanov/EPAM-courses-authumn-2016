@@ -8,7 +8,7 @@ public class CurrentFlight extends Entity {
     private Integer lagageCost;
     private Flight flight;
 
-    public Integer getTicket_cost() {
+    public Integer getTicketCost() {
         return Ticket_cost;
     }
 

@@ -2,13 +2,15 @@ package model.parsers;
 
 import org.joda.time.DateTime;
 import org.joda.time.Duration;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.ISODateTimeFormat;
 
 /**
  * Parse format yy-mm-dd hh:mm:ss
  * using model.parsers.TimeParser inside
  */
 public class DateTimeParser {
-    public static DateTime parse(String string) {
+    public static DateTime parseStringTime(String string) {
         String date = string.split(" ")[0];
         String time = string.split(" ")[1];
         String[] elements = date.split("-");
@@ -20,5 +22,10 @@ public class DateTimeParser {
         Duration duration = TimeParser.parseTimeToDuration(time);
         dateTime = dateTime.plus(duration);
         return dateTime;
+    }
+
+    public static String parseDateTime(DateTime dateTime) {
+        DateTimeFormatter fmt = ISODateTimeFormat.dateTime();
+        return dateTime.toString("dd.MM.yy hh:mm:ss");
     }
 }

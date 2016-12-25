@@ -17,6 +17,7 @@ public class ServiceManager {
         this.map.put(FlightService.class, new FlightServiceImp(connectionManager));
         this.map.put(TicketService.class, new TicketServiceImpl(connectionManager) {});
         this.map.put(UsersService.class, new UsersServiceIml(connectionManager));
+        this.map.put(CurrentFlightService.class, new CurrentFlightServiceImpl(connectionManager));
     }
 
     public static Object getService(Class servClass) {

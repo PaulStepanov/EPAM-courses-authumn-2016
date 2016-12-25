@@ -9,7 +9,9 @@ import java.util.List;
 
 public class TicketMySQLDAO implements TicketDAO {
     private final String readStatement = "SELECT ID,flight_cost,clients_users_ID,lagage_capacity,VIP,current_flight_ID FROM tickets WHERE ID=?;";
+    private final String finsByIdStatement = "SELECT ID,flight_cost,clients_users_ID,lagage_capacity,VIP,current_flight_ID FROM tickets WHERE clients_users_ID=?;";
     private final String findAllStatement = "SELECT ID,flight_cost,clients_users_ID,lagage_capacity,VIP,current_flight_ID FROM tickets";
+    private final String createStatment="INSERT INTO tickets(clients_users_ID,current_flight_ID,flight_cost,lagage_capacity,VIP) VALUES (?,?,?,?,?)";
     private ClientDAO clientDAO;
     private CurrentFlightDao currentFlightDao;
     private Connection connection;
@@ -56,12 +58,44 @@ public class TicketMySQLDAO implements TicketDAO {
         return null;
     }
 
+    @Override
+    public List<Ticket> findByUser(Integer ID) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(finsByIdStatement);
+            preparedStatement.setInt(1,ID);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            Ticket ticket;
+            ArrayList<Ticket> tickets = new ArrayList<Ticket>();
+            while (resultSet.next()) {
+                ticket = createTicketEntitty(resultSet);
+                tickets.add(ticket);
+            }
+            if (tickets.size() != 0) {
+                return tickets;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
     public void delete(Integer key) throws PersistExeption {
 
     }
 
     public Integer create(Ticket ticket) throws PersistExeption {
-        return null;
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(createStatment);
+            preparedStatement.setInt(1,ticket.getClient().getId());
+            preparedStatement.setInt(2,ticket.getCurrentFlight().getId());
+            preparedStatement.setInt(3,ticket.getFlightCost());
+            preparedStatement.setInt(4,ticket.getLagageCapacity());
+            preparedStatement.setInt(5,ticket.getVip()?1:0);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 
     public void update(Ticket ticket) throws PersistExeption {
@@ -96,4 +130,6 @@ public class TicketMySQLDAO implements TicketDAO {
         this.currentFlightDao.setConnection(connection);
         this.connection = connection;
     }
+
+
 }
