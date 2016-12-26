@@ -6,7 +6,7 @@ import model.db.ConnectionPoolManager;
 import java.util.HashMap;
 
 /**
- * Created by frees on 19.12.2016.
+ * Return instance of service, services are global in application
  */
 public class ServiceManager {
     private static ServiceManager instance = new ServiceManager();

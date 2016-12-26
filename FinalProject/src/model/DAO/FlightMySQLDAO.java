@@ -1,6 +1,7 @@
 package model.DAO;
 
 import model.domain.Flight;
+import model.domain.builders.FlightBuilder;
 import model.parsers.TimeParser;
 
 import java.sql.*;
@@ -68,15 +69,14 @@ class FlightMySQLDAO implements FlightDAO {
     private Flight createFlightEntitty(ResultSet resultSet) {
         Flight flight = null;
         try {
-            flight = new Flight();
+            flight = new FlightBuilder()
+                    .setName(resultSet.getString("name"))
+                    .setArrivalCity(cityDAO.read(resultSet.getInt("arrival_ID")))
+                    .setDepartureCity(cityDAO.read(resultSet.getInt("departure_ID")))
+                    .setFlightTime(TimeParser.parseTimeToDuration(resultSet.getString("flight_time")))
+                    .setMaxLagage(resultSet.getInt("max_lagage_count"))
+                    .createFlight();
             flight.setId(resultSet.getInt("ID"));
-            flight.setName(resultSet.getString("name"));
-            flight.setArrivalCity(cityDAO.read(resultSet.getInt("arrival_ID")));
-            flight.setDepartureCity(cityDAO.read(resultSet.getInt("departure_ID")));
-            flight.setFlightTime(TimeParser.parseTimeToDuration(
-                    resultSet.getString("flight_time")
-            ));
-            flight.setMaxLagage(resultSet.getInt("max_lagage_count"));
         } catch (SQLException e) {
             e.printStackTrace();
         }

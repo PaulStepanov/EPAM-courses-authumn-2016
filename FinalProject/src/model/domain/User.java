@@ -6,6 +6,13 @@ public class User extends Entity {
     private String email;
     private Integer priviligesLvl = 0;
 
+    public User(String login, String password, String email, Integer priviligesLvl) {
+        this.login = login;
+        this.password = password;
+        this.email = email;
+        this.priviligesLvl = priviligesLvl;
+    }
+
     public String getLogin() {
         return login;
     }

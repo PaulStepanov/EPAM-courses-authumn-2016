@@ -13,7 +13,7 @@ class UsersServiceIml implements UsersService {
     private boolean validUser = false;
     private ConnectionManager connectionManager;
 
-    public UsersServiceIml(ConnectionManager connectionManager) {
+    UsersServiceIml(ConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
         this.userDAO = (UserDAO) FabricMySADA.getDAO(UserDAO.class);
     }

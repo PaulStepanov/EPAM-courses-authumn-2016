@@ -63,9 +63,7 @@ public class FlightController extends Controller {
                     RequestDispatcher curFlightsDispatcher = request.getServletContext().getRequestDispatcher("/avalibleFlights.jsp");
                     try {
                         curFlightsDispatcher.forward(request, response);
-                    } catch (ServletException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (ServletException | IOException e) {
                         e.printStackTrace();
                     }
                 }));

@@ -8,6 +8,13 @@ public class CurrentFlight extends Entity {
     private Integer lagageCost;
     private Flight flight;
 
+    public CurrentFlight(Integer ticket_cost, DateTime dateTime, Integer lagageCost, Flight flight) {
+        Ticket_cost = ticket_cost;
+        this.dateTime = dateTime;
+        this.lagageCost = lagageCost;
+        this.flight = flight;
+    }
+
     public Integer getTicketCost() {
         return Ticket_cost;
     }

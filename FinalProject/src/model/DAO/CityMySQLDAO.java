@@ -1,6 +1,7 @@
 package model.DAO;
 
 import model.domain.City;
+import model.domain.builders.CityBuilder;
 import model.exeptions.PersistExeption;
 
 import java.sql.Connection;
@@ -24,9 +25,10 @@ class CityMySQLDAO implements CityDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             City city = null;
             if (resultSet.next()) {
-                city = new City();
+                city = new CityBuilder()
+                        .setName(resultSet.getString("name"))
+                        .createCity();
                 city.setId(resultSet.getInt("ID"));
-                city.setName(resultSet.getString("name"));
             }
             return city;
         } catch (SQLException e) {

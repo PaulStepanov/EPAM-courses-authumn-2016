@@ -7,6 +7,14 @@ public class Ticket extends Entity {
     private Boolean vip = false;
     private CurrentFlight currentFlight;
 
+    public Ticket(Integer flightCost, Client client, Integer lagageCapacity, Boolean vip, CurrentFlight currentFlight) {
+        this.flightCost = flightCost;
+        this.client = client;
+        this.lagageCapacity = lagageCapacity;
+        this.vip = vip;
+        this.currentFlight = currentFlight;
+    }
+
     public Integer getFlightCost() {
         return flightCost;
     }

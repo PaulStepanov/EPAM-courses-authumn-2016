@@ -1,6 +1,7 @@
 package model.DAO;
 
 import model.domain.CurrentFlight;
+import model.domain.builders.CurrentFlightBuilder;
 import model.exeptions.PersistExeption;
 import model.parsers.DateTimeParser;
 
@@ -77,12 +78,13 @@ class CurrentFlightMySQLDAO implements CurrentFlightDao {
     private CurrentFlight createCurrentFlightEntity(ResultSet resultSet) throws SQLException {
         CurrentFlight currentFlight = null;
         if (resultSet.next()) {
-            currentFlight = new CurrentFlight();
+            currentFlight = new CurrentFlightBuilder()
+                    .setTicket_cost(resultSet.getInt("ticket_cost"))
+                    .setDateTime(DateTimeParser.parseStringTime(resultSet.getString("date").trim()))
+                    .setLagageCost(resultSet.getInt("lagage_cost"))
+                    .setFlight(flightDAO.read(resultSet.getInt("flight_ID")))
+                    .createCurrentFlight();
             currentFlight.setId(resultSet.getInt("ID"));
-            currentFlight.setTicket_cost(resultSet.getInt("ticket_cost"));
-            currentFlight.setDateTime(DateTimeParser.parseStringTime(resultSet.getString("date").trim()));
-            currentFlight.setLagageCost(resultSet.getInt("lagage_cost"));
-            currentFlight.setFlight(flightDAO.read(resultSet.getInt("flight_ID")));
         }
         return currentFlight;
     }

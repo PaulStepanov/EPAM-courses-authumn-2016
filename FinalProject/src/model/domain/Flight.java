@@ -9,6 +9,14 @@ public class Flight extends Entity {
     private Duration flightTime;
     private Integer maxLagage;
 
+    public Flight(String name, City arrivalCity, City departureCity, Duration flightTime, Integer maxLagage) {
+        this.name = name;
+        this.arrivalCity = arrivalCity;
+        this.departureCity = departureCity;
+        this.flightTime = flightTime;
+        this.maxLagage = maxLagage;
+    }
+
     public String getName() {
         return name;
     }

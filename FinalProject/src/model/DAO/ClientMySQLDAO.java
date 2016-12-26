@@ -1,6 +1,7 @@
 package model.DAO;
 
 import model.domain.Client;
+import model.domain.builders.ClientBuilder;
 import model.exeptions.PersistExeption;
 
 import java.sql.Connection;
@@ -41,12 +42,14 @@ class ClientMySQLDAO implements ClientDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             Client client = null;
             if (resultSet.next()) {
-                client = new Client();
+                client = new ClientBuilder()
+                        .setName(resultSet.getString("name"))
+                        .setSurname(resultSet.getString("surname"))
+                        .setPatronymic(resultSet.getString("patronymic"))
+                        .setPhone(resultSet.getString("phone"))
+                        .setUser(userDAO.read(key))
+                        .createClient();
                 client.setId(key);
-                client.setName(resultSet.getString("name"));
-                client.setSurname(resultSet.getString("surname"));
-                client.setPatronymic(resultSet.getString("patronymic"));
-                client.setPhone(resultSet.getString("phone"));
                 client.setUser(userDAO.read(key));
             }
             return client;

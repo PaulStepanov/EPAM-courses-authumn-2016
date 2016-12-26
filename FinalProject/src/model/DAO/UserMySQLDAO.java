@@ -1,6 +1,7 @@
 package model.DAO;
 
 import model.domain.User;
+import model.domain.UserBuilder;
 import model.exeptions.PersistExeption;
 
 import java.sql.Connection;
@@ -25,12 +26,13 @@ class UserMySQLDAO implements UserDAO {
             ResultSet resultSet = preparedStatement.executeQuery();
             User user = null;
             if (resultSet.next()) {
-                user = new User();
+                user = new UserBuilder()
+                        .setLogin(resultSet.getString("login"))
+                        .setPassword(resultSet.getString("password"))
+                        .setEmail(resultSet.getString("email"))
+                        .setPriviligesLvl(resultSet.getInt("priviliges_lvl"))
+                        .createUser();
                 user.setId(key);
-                user.setLogin(resultSet.getString("login"));
-                user.setPassword(resultSet.getString("password"));
-                user.setEmail(resultSet.getString("email"));
-                user.setPriviligesLvl(resultSet.getInt("priviliges_lvl"));
                 return user;
             }
         } catch (SQLException e) {

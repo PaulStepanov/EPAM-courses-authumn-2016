@@ -7,6 +7,9 @@ import model.db.ConnectionManager;
 import model.domain.Client;
 import model.domain.CurrentFlight;
 import model.domain.Ticket;
+import model.domain.builders.ClientBuilder;
+import model.domain.builders.CurrentFlightBuilder;
+import model.domain.builders.TicketBuilder;
 import model.exeptions.PersistExeption;
 
 import java.util.List;
@@ -45,23 +48,23 @@ class TicketServiceImpl implements TicketService {
             return false;
         }
         connectionService.setConnection(connectionManager.getConnection());
-        Ticket ticket = new Ticket();
-        CurrentFlight flight = new CurrentFlight();
+        TicketBuilder ticketBuilder = new TicketBuilder();
+        CurrentFlight flight = new CurrentFlightBuilder().createCurrentFlight();
         flight.setId(currentFlightId);
-        ticket.setCurrentFlight(flight);
-        ticket.setVip(VIP);
+        ticketBuilder.setCurrentFlight(flight);
+        ticketBuilder.setVip(VIP);
 
-        ticket.setLagageCapacity(luggage);
-        Client client = new Client();
+        ticketBuilder.setLagageCapacity(luggage);
+        Client client = new ClientBuilder().createClient();
         client.setId(clientID);
-        ticket.setClient(client);
+        ticketBuilder.setClient(client);
 
         Integer cost = 0;
         cost += currentFlight.getTicketCost();
         cost += currentFlight.getLagageCost() * luggage;
-        ticket.setFlightCost(cost);
+        ticketBuilder.setFlightCost(cost);
         try {
-            ticketDAO.create(ticket);
+            ticketDAO.create(ticketBuilder.createTicket());
             return true;
         } catch (PersistExeption throwables) {
             throwables.printStackTrace();

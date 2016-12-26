@@ -1,13 +1,14 @@
 package model.DAO;
 
 import model.domain.Ticket;
+import model.domain.builders.TicketBuilder;
 import model.exeptions.PersistExeption;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TicketMySQLDAO implements TicketDAO {
+class TicketMySQLDAO implements TicketDAO {
     private final String readStatement = "SELECT ID,flight_cost,clients_users_ID,lagage_capacity,VIP,current_flight_ID FROM tickets WHERE ID=?;";
     private final String finsByIdStatement = "SELECT ID,flight_cost,clients_users_ID,lagage_capacity,VIP,current_flight_ID FROM tickets WHERE clients_users_ID=?;";
     private final String findAllStatement = "SELECT ID,flight_cost,clients_users_ID,lagage_capacity,VIP,current_flight_ID FROM tickets";
@@ -106,13 +107,14 @@ public class TicketMySQLDAO implements TicketDAO {
     private Ticket createTicketEntitty(ResultSet resultSet) {
         Ticket ticket = null;
         try {
-            ticket = new Ticket();
+            ticket = new TicketBuilder()
+                    .setFlightCost(resultSet.getInt("flight_cost"))
+                    .setClient(clientDAO.read(resultSet.getInt("clients_users_ID")))
+                    .setLagageCapacity(resultSet.getInt("lagage_capacity"))
+                    .setVip(resultSet.getBoolean("VIP"))
+                    .setCurrentFlight(currentFlightDao.read(resultSet.getInt("current_flight_ID")))
+                    .createTicket();
             ticket.setId(resultSet.getInt("ID"));
-            ticket.setFlightCost(resultSet.getInt("flight_cost"));
-            ticket.setClient(clientDAO.read(resultSet.getInt("clients_users_ID")));
-            ticket.setLagageCapacity(resultSet.getInt("lagage_capacity"));
-            ticket.setVip(resultSet.getBoolean("VIP"));
-            ticket.setCurrentFlight(currentFlightDao.read(resultSet.getInt("current_flight_ID")));
         } catch (SQLException e) {
             e.printStackTrace();
         }

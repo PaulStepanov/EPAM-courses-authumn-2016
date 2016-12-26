@@ -14,9 +14,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-/**
- * Created by frees on 19.12.2016.
- */
+
 public class TicketsController extends Controller {
     public TicketsController() {
         super();

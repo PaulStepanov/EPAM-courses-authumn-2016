@@ -1,24 +1,10 @@
-package model.domain.builders;
+package model.domain;
 
-import model.domain.User;
-
-/**
- * Created by frees on 19.12.2016.
- */
 public class UserBuilder {
     private String login;
     private String password;
     private String email;
-    private Integer priviligesLvl = 0;
-    private User user = new User();
-
-    public UserBuilder(String login, String password, String email, Integer priviligesLvl, User user) {
-        this.login = login;
-        this.password = password;
-        this.email = email;
-        this.priviligesLvl = priviligesLvl;
-        this.user = user;
-    }
+    private Integer priviligesLvl;
 
     public UserBuilder setLogin(String login) {
         this.login = login;
@@ -40,8 +26,7 @@ public class UserBuilder {
         return this;
     }
 
-    public UserBuilder setUser(User user) {
-        this.user = user;
-        return this;
+    public User createUser() {
+        return new User(login, password, email, priviligesLvl);
     }
 }

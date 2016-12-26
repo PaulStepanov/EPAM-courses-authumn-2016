@@ -7,6 +7,14 @@ public class Client extends Entity {
     private String phone;
     private User user;
 
+    public Client(String name, String surname, String patronymic, String phone, User user) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.phone = phone;
+        this.user = user;
+    }
+
     public String getName() {
         return name;
     }

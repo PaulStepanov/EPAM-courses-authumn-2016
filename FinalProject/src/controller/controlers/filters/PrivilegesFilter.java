@@ -55,10 +55,7 @@ public class PrivilegesFilter implements Filter {
                 Matcher matcher = pattern.matcher(URI);
                 if (matcher.find()) {
                     User user = (User) ((HttpServletRequest) request).getSession().getAttribute("user");
-                    if (user == null) {
-                        return false;
-                    }
-                    return user.getPriviligesLvl() >= privilege.getValue();
+                    return user != null && user.getPriviligesLvl() >= privilege.getValue();
                 }
             }
         }
