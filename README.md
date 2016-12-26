@@ -1,7 +1,7 @@
 # EPAM-courses-authumn-2016
 ##Final project 
 ###How to run
-1. create DB with custom name, execute create.sql than addFakeInf.sql
+1. create DB with custom name, execute create.sql than addFakeInf.sql SQLscripts
 2. in META-INF\context.xml set db name in connection, user and password
 3. compile classes from src to \web\WEB-INF\classes
 4. add dependencies jar's to  WEB-INF\lib
