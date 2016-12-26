@@ -1,4 +1,4 @@
-# EPAM-courses-authumn-2016
+# EPAM-courses-authumn-2016 Vitebsk State University
 ##Final project 
 ###How to run
 1. create DB with custom name, execute create.sql than addFakeInf.sql SQLscripts
