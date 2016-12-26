@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by frees on 16.12.2016.
+ * Logging type of method,request URI than logs response status
+ * Example: GET /html/availableFlightsstatus:200
  */
-
-
 public class LogFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -21,11 +20,10 @@ public class LogFilter implements Filter {
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
-        //TODO replace with stringbuilder
         Log4jLogger.log(httpRequest.getMethod() + " " + httpRequest.getRequestURI());
         filterChain.doFilter(servletRequest, servletResponse);
-        Integer respStat=((HttpServletResponse)servletResponse).getStatus();
-        Log4jLogger.log(httpRequest.getMethod() + " " + httpRequest.getRequestURI()+"status:"+respStat);
+        Integer respStat = ((HttpServletResponse) servletResponse).getStatus();
+        Log4jLogger.log(httpRequest.getMethod() + " " + httpRequest.getRequestURI() + "status:" + respStat);
     }
 
     @Override

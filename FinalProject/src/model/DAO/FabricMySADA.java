@@ -6,13 +6,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Created by frees on 19.12.2016.
+ * Create required dao
+ * parameter can be Interface DAO class, like CityDAO.class ,
+ * whe we pass Interface class fabric use validation inside to use necessary implementation.
+ * Also it can be exact implementation, like  CityMySQLDAO.class .
  */
-public class FabrikMySQLDAO {
-    private static FabrikMySQLDAO instanse = new FabrikMySQLDAO();
+public class FabricMySADA {
+    private static FabricMySADA instance = new FabricMySADA();
     private HashMap<Class, Class> validationMap = new HashMap<>();
 
-    public FabrikMySQLDAO() {
+    public FabricMySADA() {
         validationMap.put(CityDAO.class, CityMySQLDAO.class);
         validationMap.put(ClientDAO.class, ClientMySQLDAO.class);
         validationMap.put(CurrentFlightDao.class, CurrentFlightMySQLDAO.class);
@@ -48,7 +51,7 @@ public class FabrikMySQLDAO {
     }
 
     public static DBDAO<?> getDAO(Class classDAO) {
-        return instanse.createDAO(classDAO);
+        return instance.createDAO(classDAO);
     }
 
     private Class validateClassImplClass(Class clas) {

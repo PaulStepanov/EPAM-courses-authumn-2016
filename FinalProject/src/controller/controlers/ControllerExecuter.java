@@ -5,30 +5,29 @@ import controller.controlers.routes.RouteMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * Execute Controler routing functions
- * Pattern decorator
+ * Execute routing functions in Controller
  **/
-public class ControlerExecuter {
-    private Controler controler;
+class ControllerExecuter {
+    private Controller controller;
     private RouteMethod method;
 
-    public ControlerExecuter(Controler controler) {
-        this.controler = controler;
+    ControllerExecuter(Controller controller) {
+        this.controller = controller;
     }
 
-    public void initExecutor(HttpServletRequest request, HttpServletResponse response) {
+    void initExecutor(HttpServletRequest request, HttpServletResponse response) {
         method = RouteMethod.valueOf(request.getMethod());
-        HashMap<RouteMethod, HashMap> routings = controler.getRoutings();
-        HashMap<String, Route> routMap = routings.get(
+        HashMap<RouteMethod, ArrayList<Route>> routings = controller.getRoutings();
+        ArrayList<Route> routList = routings.get(
                 RouteMethod.valueOf(request.getMethod()));
-        routMap.forEach((uri, route) -> {
+        routList.forEach((route) -> {
             if (route.getURI().equals(request.getPathInfo())) {
                 route.getRoutingFunction().exec(request, response);
             }
         });
     }
-
 }

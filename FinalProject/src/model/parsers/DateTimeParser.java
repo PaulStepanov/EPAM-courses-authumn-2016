@@ -6,8 +6,8 @@ import org.joda.time.format.DateTimeFormatter;
 import org.joda.time.format.ISODateTimeFormat;
 
 /**
- * Parse format yy-mm-dd hh:mm:ss
- * using model.parsers.TimeParser inside
+ * Parse format yy-mm-dd hh:mm:ss to DateTime
+ * Parse DateTime to dd.MM.yy hh:mm:ss
  */
 public class DateTimeParser {
     public static DateTime parseStringTime(String string) {

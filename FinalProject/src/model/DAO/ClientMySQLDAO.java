@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class ClientMySQLDAO implements ClientDAO {
+class ClientMySQLDAO implements ClientDAO {
     private final String readStatement = "SELECT `name`,surname,patronymic,phone FROM clients WHERE users_ID=?;";
     private Connection connection;
     private UserDAO userDAO;

@@ -16,13 +16,8 @@ public class ConnectionManagerMySQLDriver implements ConnectionManager {
             this.connection = DriverManager.getConnection(SETTINGS.getProp("url")
                     + "?user=" + SETTINGS.getProp("user") + "&password=" + SETTINGS.getProp("password"));
 
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        } catch (InstantiationException | IllegalAccessException
+                | ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }

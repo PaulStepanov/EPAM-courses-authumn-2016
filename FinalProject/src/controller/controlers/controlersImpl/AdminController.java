@@ -1,5 +1,6 @@
-package controller.controlers;
+package controller.controlers.controlersImpl;
 
+import controller.controlers.Controller;
 import controller.controlers.routes.Route;
 import controller.controlers.routes.RouteMethod;
 import controller.services.ServiceManager;
@@ -11,8 +12,8 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class AdminControler extends Controler {
-    public AdminControler() {
+public class AdminController extends Controller {
+    public AdminController() {
         super();
         this.addRoute(new Route(RouteMethod.GET,
                 "/admin/ticketsAll",

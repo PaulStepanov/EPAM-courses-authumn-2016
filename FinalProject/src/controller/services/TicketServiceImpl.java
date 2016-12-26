@@ -1,7 +1,7 @@
 package controller.services;
 
 import controller.services.connection.ConnectionServiceControl;
-import model.DAO.FabrikMySQLDAO;
+import model.DAO.FabricMySADA;
 import model.DAO.TicketDAO;
 import model.db.ConnectionManager;
 import model.domain.Client;
@@ -11,14 +11,14 @@ import model.exeptions.PersistExeption;
 
 import java.util.List;
 
-public class TicketServiceImpl implements TicketService {
+class TicketServiceImpl implements TicketService {
     TicketDAO ticketDAO;
     ConnectionManager connectionManager;
     ConnectionServiceControl connectionService;
 
-    public TicketServiceImpl(ConnectionManager connectionManag) {
+    TicketServiceImpl(ConnectionManager connectionManag) {
         this.connectionManager = connectionManag;
-        this.ticketDAO = (TicketDAO) FabrikMySQLDAO.getDAO(TicketDAO.class);
+        this.ticketDAO = (TicketDAO) FabricMySADA.getDAO(TicketDAO.class);
         this.connectionService = new ConnectionServiceControl(ticketDAO);
     }
 
@@ -69,6 +69,4 @@ public class TicketServiceImpl implements TicketService {
         connectionService.releaseConection();
         return false;
     }
-
-
 }

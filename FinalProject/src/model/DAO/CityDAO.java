@@ -2,5 +2,5 @@ package model.DAO;
 
 import model.domain.City;
 
-public interface CityDAO extends DBDAO<City> {
+interface CityDAO extends DBDAO<City> {
 }

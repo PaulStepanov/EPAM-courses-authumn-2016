@@ -1,6 +1,6 @@
 package test;
 
-import model.DAO.FabrikMySQLDAO;
+import model.DAO.FabricMySADA;
 import model.DAO.TicketDAO;
 
 /**
@@ -8,10 +8,10 @@ import model.DAO.TicketDAO;
  */
 public class FabrikTest {
     public static void main(String... args) {
-//        FabrikMySQLDAO.getDAO(model.DAO.CityDAO.class);
-//        FabrikMySQLDAO.getDAO(FlightDAO.class);
-//        FabrikMySQLDAO.getDAO(CurrentFlight.class);
-//        FabrikMySQLDAO.getDAO(UserDAO.class);
-        FabrikMySQLDAO.getDAO(TicketDAO.class);
+//        FabricMySADA.getDAO(model.DAO.CityDAO.class);
+//        FabricMySADA.getDAO(FlightDAO.class);
+//        FabricMySADA.getDAO(CurrentFlight.class);
+//        FabricMySADA.getDAO(UserDAO.class);
+        FabricMySADA.getDAO(TicketDAO.class);
     }
 }

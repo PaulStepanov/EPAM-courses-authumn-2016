@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FlightMySQLDAO implements FlightDAO {
+class FlightMySQLDAO implements FlightDAO {
     private Connection connection;
     private final String findAllStatement = "SELECT `ID`,`name`,`max_lagage_count`,`flight_time`,`departure_ID`,`arrival_ID` FROM flight;";
     private final String readStatement = "SELECT `ID`,`name`,arrival_ID,departure_ID,flight_time,max_lagage_count FROM flight WHERE ID=?";

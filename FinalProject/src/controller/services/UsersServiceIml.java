@@ -1,6 +1,6 @@
 package controller.services;
 
-import model.DAO.FabrikMySQLDAO;
+import model.DAO.FabricMySADA;
 import model.DAO.UserDAO;
 import model.db.ConnectionManager;
 import model.domain.User;
@@ -8,14 +8,14 @@ import model.domain.User;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class UsersServiceIml implements UsersService {
+class UsersServiceIml implements UsersService {
     private UserDAO userDAO;
     private boolean validUser = false;
     private ConnectionManager connectionManager;
 
     public UsersServiceIml(ConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
-        this.userDAO = (UserDAO) FabrikMySQLDAO.getDAO(UserDAO.class);
+        this.userDAO = (UserDAO) FabricMySADA.getDAO(UserDAO.class);
     }
 
 

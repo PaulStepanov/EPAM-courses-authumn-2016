@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class UserMySQLDAO implements UserDAO {
+class UserMySQLDAO implements UserDAO {
     private Connection connection;
     private final String readStatement = "SELECT login,password,email,priviliges_lvl FROM `users` WHERE ID=?";
     private final String findByLoginStatement = "SELECT ID from users WHERE `login`=? AND `password`=? ";

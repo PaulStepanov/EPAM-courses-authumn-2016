@@ -9,12 +9,12 @@ import java.sql.SQLException;
 
 /**
  * Getting dataSource from Tomcat dataSource pull.
+ * Connection provided to users must be closed by user, in this case it will be returned to pool.
  */
 public class ConnectionPoolManager implements ConnectionManager {
     private DataSource dataSource;
 
-    /*
-    *Initializing dataSource pool  using airline context.*/
+    //Initializing dataSource pool  using airline context.
     public ConnectionPoolManager() {
         try {
             Context ctx = new InitialContext();

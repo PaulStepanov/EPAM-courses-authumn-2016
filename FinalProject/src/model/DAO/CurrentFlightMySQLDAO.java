@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrentFlightMySQLDAO implements CurrentFlightDao {
+class CurrentFlightMySQLDAO implements CurrentFlightDao {
     private Connection connection;
     private final String readStatement = "SELECT ID,ticket_cost,`date`,lagage_cost,flight_ID FROM current_flight WHERE ID=?";
     private final String findAll = "SELECT ID,ticket_cost,`date`,lagage_cost,flight_ID FROM current_flight";

@@ -3,7 +3,8 @@ package model.exeptions;
 import java.sql.SQLException;
 
 /**
- * Created by Павел on 28-Nov-16.
+ * SQL exception wrapper using in DAO to specialize exeption by DAO methods
+ * and not to break polymorphism rule
  */
 public class PersistExeption extends SQLException {
     public PersistExeption(String reason) {

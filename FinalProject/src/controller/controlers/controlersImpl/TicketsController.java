@@ -1,5 +1,6 @@
-package controller.controlers;
+package controller.controlers.controlersImpl;
 
+import controller.controlers.Controller;
 import controller.controlers.routes.Route;
 import controller.controlers.routes.RouteMethod;
 import controller.services.ServiceManager;
@@ -16,8 +17,8 @@ import java.util.ArrayList;
 /**
  * Created by frees on 19.12.2016.
  */
-public class TicketsControler extends Controler {
-    public TicketsControler() {
+public class TicketsController extends Controller {
+    public TicketsController() {
         super();
         super.addRoute(new Route(RouteMethod.GET,
                 "/user/tickets",
@@ -29,9 +30,7 @@ public class TicketsControler extends Controler {
                     RequestDispatcher tictesDispatcher = request.getServletContext().getRequestDispatcher("/myTickets.jsp");
                     try {
                         tictesDispatcher.forward(request, response);
-                    } catch (ServletException e) {
-                        e.printStackTrace();
-                    } catch (IOException e) {
+                    } catch (ServletException | IOException e) {
                         e.printStackTrace();
                     }
 

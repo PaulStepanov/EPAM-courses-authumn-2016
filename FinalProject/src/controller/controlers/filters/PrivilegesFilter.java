@@ -12,6 +12,10 @@ import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Setup privileges to specified URI's
+ * Exact URI's sets in init method after implementation comment
+ */
 public class PrivilegesFilter implements Filter {
     private HashMap<Privilege, ArrayList<String>> privilegeMap = new HashMap<>();
 
@@ -31,7 +35,7 @@ public class PrivilegesFilter implements Filter {
             chain.doFilter(request, response);
         } else {
             RequestDispatcher errorDispatcher = request.getServletContext().getRequestDispatcher("/error.jsp");
-            HttpServletResponse resp=((HttpServletResponse)response);
+            HttpServletResponse resp = ((HttpServletResponse) response);
             resp.setStatus(HttpServletResponse.SC_FORBIDDEN);
             errorDispatcher.forward(request, resp);
         }

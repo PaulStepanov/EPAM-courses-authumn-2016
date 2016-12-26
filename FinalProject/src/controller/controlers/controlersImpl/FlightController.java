@@ -1,5 +1,6 @@
-package controller.controlers;
+package controller.controlers.controlersImpl;
 
+import controller.controlers.Controller;
 import controller.controlers.routes.Route;
 import controller.controlers.routes.RouteMethod;
 import controller.services.CurrentFlightService;
@@ -13,8 +14,8 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class FlightControler extends Controler {
-    public FlightControler() {
+public class FlightController extends Controller {
+    public FlightController() {
         super();
         this.addRoute(new Route(RouteMethod.GET,
                 "/flights",
@@ -40,9 +41,7 @@ public class FlightControler extends Controler {
                         RequestDispatcher errorDispatcher = request.getServletContext().getRequestDispatcher("/error.jsp");
                         try {
                             errorDispatcher.forward(request, response);
-                        } catch (ServletException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
+                        } catch (ServletException | IOException e) {
                             e.printStackTrace();
                         }
                     } else {
@@ -50,13 +49,10 @@ public class FlightControler extends Controler {
                         try {
                             request.setAttribute("currentFlight", flight);
                             curFlightDispatcher.forward(request, response);
-                        } catch (ServletException e) {
-                            e.printStackTrace();
-                        } catch (IOException e) {
+                        } catch (ServletException | IOException e) {
                             e.printStackTrace();
                         }
                     }
-
                 }));
         this.addRoute(new Route(RouteMethod.GET,
                 "/availableFlights",

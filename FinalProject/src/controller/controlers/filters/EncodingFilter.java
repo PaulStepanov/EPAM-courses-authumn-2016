@@ -4,7 +4,7 @@ import javax.servlet.*;
 import java.io.IOException;
 
 /**
- * Created by frees on 16.12.2016.
+ * Filter sets UTF-8 Encoding for request and response
  */
 public class EncodingFilter implements Filter {
     @Override

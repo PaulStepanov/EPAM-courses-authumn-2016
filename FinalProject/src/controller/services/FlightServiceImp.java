@@ -1,20 +1,20 @@
 package controller.services;
 
 import controller.services.connection.ConnectionServiceControl;
-import model.DAO.FabrikMySQLDAO;
+import model.DAO.FabricMySADA;
 import model.DAO.FlightDAO;
 import model.db.ConnectionManager;
 import model.domain.Flight;
 
 import java.util.List;
 
-public class FlightServiceImp implements FlightService {
+class FlightServiceImp implements FlightService {
     FlightDAO flightDAO;
     ConnectionManager connectionManager;
     ConnectionServiceControl connectionService;
 
-    public FlightServiceImp(ConnectionManager connectionManager) {
-        flightDAO = (FlightDAO) new FabrikMySQLDAO().createDAO(FlightDAO.class);
+    FlightServiceImp(ConnectionManager connectionManager) {
+        flightDAO = (FlightDAO) new FabricMySADA().createDAO(FlightDAO.class);
         this.connectionManager = connectionManager;
         this.connectionService = new ConnectionServiceControl(flightDAO);
     }

@@ -11,12 +11,6 @@ public class Route {
         this.routingFunction = routingFunction;
     }
 
-    public Route(RouteMethod method, String URI, RoutingFunction routingFunction, Integer privileges) {
-        this.method = method;
-        this.URI = URI;
-        this.routingFunction = routingFunction;
-    }
-
     public String getURI() {
         return URI;
     }

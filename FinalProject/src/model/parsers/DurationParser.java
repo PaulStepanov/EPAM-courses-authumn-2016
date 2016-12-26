@@ -3,6 +3,9 @@ package model.parsers;
 import org.joda.time.Duration;
 import org.joda.time.Period;
 
+/**
+ * Parse duration to hh:mm:ss
+ */
 public class DurationParser {
     public static String parseDuration(Duration duration) {
         StringBuilder result = new StringBuilder();
@@ -11,7 +14,7 @@ public class DurationParser {
         result.append(":");
         result.append(period.getMinutes());
         result.append(":");
-        result.append(period.getMillis());
+        result.append(period.getSeconds());
         return result.toString();
     }
 

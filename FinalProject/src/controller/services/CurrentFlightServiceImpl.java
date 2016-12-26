@@ -2,7 +2,7 @@ package controller.services;
 
 import controller.services.connection.ConnectionServiceControl;
 import model.DAO.CurrentFlightDao;
-import model.DAO.FabrikMySQLDAO;
+import model.DAO.FabricMySADA;
 import model.db.ConnectionManager;
 import model.domain.CurrentFlight;
 import model.exeptions.PersistExeption;
@@ -10,14 +10,14 @@ import model.exeptions.PersistExeption;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CurrentFlightServiceImpl implements CurrentFlightService {
+class CurrentFlightServiceImpl implements CurrentFlightService {
     CurrentFlightDao currentFlightDao;
     ConnectionManager connectionManager;
     ConnectionServiceControl connectionService;
 
-    public CurrentFlightServiceImpl(ConnectionManager connectionManager) {
+    CurrentFlightServiceImpl(ConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
-        this.currentFlightDao = (CurrentFlightDao) FabrikMySQLDAO.getDAO(CurrentFlightDao.class);
+        this.currentFlightDao = (CurrentFlightDao) FabricMySADA.getDAO(CurrentFlightDao.class);
         this.connectionService = new ConnectionServiceControl(currentFlightDao);
     }
 
