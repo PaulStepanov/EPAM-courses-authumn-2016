@@ -25,7 +25,7 @@ public class ControlerExecuter {
         HashMap<String, Route> routMap = routings.get(
                 RouteMethod.valueOf(request.getMethod()));
         routMap.forEach((uri, route) -> {
-            if (route.getURI().equals(request.getPathInfo())) {// TODO написать функцию обрабатывающую URL и ошибкт
+            if (route.getURI().equals(request.getPathInfo())) {
                 route.getRoutingFunction().exec(request, response);
             }
         });

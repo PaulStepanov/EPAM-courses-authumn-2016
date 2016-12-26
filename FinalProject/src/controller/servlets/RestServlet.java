@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-/*TODO пофиксить костыль с сервлетом,ибо если оставить /то ресурсы из web папки не получаются,
-также*/
-//@WebServlet("/*")
 public class RestServlet extends HttpServlet {
     private ControlerRegister controlerRegister= new ControlerRegister();
 
@@ -22,7 +19,6 @@ public class RestServlet extends HttpServlet {
         controlerRegister.registerControler(new LoginControler());
     }
 
-    /*Testing*/
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         controlerRegister.activateControlers(request,response);
     }
