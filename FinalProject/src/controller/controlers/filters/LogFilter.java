@@ -4,6 +4,7 @@ import model.logger.Log4jLogger;
 
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -19,10 +20,12 @@ public class LogFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest httpRequest = (HttpServletRequest)servletRequest;
+        HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         //TODO replace with stringbuilder
-        Log4jLogger.log(httpRequest.getMethod()+" "+httpRequest.getRequestURI());
-        filterChain.doFilter(servletRequest,servletResponse);
+        Log4jLogger.log(httpRequest.getMethod() + " " + httpRequest.getRequestURI());
+        filterChain.doFilter(servletRequest, servletResponse);
+        Integer respStat=((HttpServletResponse)servletResponse).getStatus();
+        Log4jLogger.log(httpRequest.getMethod() + " " + httpRequest.getRequestURI()+"status:"+respStat);
     }
 
     @Override

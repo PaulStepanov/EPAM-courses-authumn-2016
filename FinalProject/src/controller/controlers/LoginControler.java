@@ -17,12 +17,12 @@ public class LoginControler extends Controler {
                 new Route(RouteMethod.POST,
                         "/login",
                         (request, response) -> {
-                            String login=request.getParameter("login");
-                            String password=request.getParameter("password");
-                            UsersService usersService= new UsersServiceIml(new ConnectionPoolManager());
-                            User user=usersService.getByLoginAndPassword(login,password);
-                            request.getSession().setAttribute("user",user);
-                            if (user!=null) {
+                            String login = request.getParameter("login");
+                            String password = request.getParameter("password");
+                            UsersService usersService = new UsersServiceIml(new ConnectionPoolManager());
+                            User user = usersService.getByLoginAndPassword(login, password);
+                            request.getSession().setAttribute("user", user);
+                            if (user != null) {
                                 try {
                                     response.setContentType("text/plain");
                                     final PrintWriter write = response.getWriter();
@@ -32,11 +32,11 @@ public class LoginControler extends Controler {
                                     e.printStackTrace();
                                 }
                             }
-                }));
+                        }));
         this.addRoute(
                 new Route(RouteMethod.GET,
                         "/logout",
-                        (request, response) -> request.getSession().setAttribute("user",null)
+                        (request, response) -> request.getSession().setAttribute("user", null)
                 ));
     }
 

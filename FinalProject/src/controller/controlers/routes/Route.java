@@ -5,15 +5,16 @@ public class Route {
     private RouteMethod method;
     private RoutingFunction routingFunction;
 
-    public Route(RouteMethod method, String URI,RoutingFunction routingFunction) {
+    public Route(RouteMethod method, String URI, RoutingFunction routingFunction) {
         this.method = method;
         this.URI = URI;
-        this.routingFunction=routingFunction;
+        this.routingFunction = routingFunction;
     }
-    public Route(RouteMethod method, String URI,RoutingFunction routingFunction,Integer privileges) {
+
+    public Route(RouteMethod method, String URI, RoutingFunction routingFunction, Integer privileges) {
         this.method = method;
         this.URI = URI;
-        this.routingFunction=routingFunction;
+        this.routingFunction = routingFunction;
     }
 
     public String getURI() {

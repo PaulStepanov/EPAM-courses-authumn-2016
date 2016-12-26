@@ -20,7 +20,7 @@ public class ConnectionServiceControl {
 
     public void releaseConection() {
         try {
-            if (dao.getConnection()!=null) {
+            if (dao.getConnection() != null) {
                 dao.getConnection().close();
             }
         } catch (SQLException e) {

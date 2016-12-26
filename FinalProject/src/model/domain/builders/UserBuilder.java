@@ -10,7 +10,7 @@ public class UserBuilder {
     private String password;
     private String email;
     private Integer priviligesLvl = 0;
-    private User user=new User();
+    private User user = new User();
 
     public UserBuilder(String login, String password, String email, Integer priviligesLvl, User user) {
         this.login = login;

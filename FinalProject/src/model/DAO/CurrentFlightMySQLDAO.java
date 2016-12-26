@@ -11,7 +11,7 @@ import java.util.List;
 public class CurrentFlightMySQLDAO implements CurrentFlightDao {
     private Connection connection;
     private final String readStatement = "SELECT ID,ticket_cost,`date`,lagage_cost,flight_ID FROM current_flight WHERE ID=?";
-    private final String findAll="SELECT ID,ticket_cost,`date`,lagage_cost,flight_ID FROM current_flight";
+    private final String findAll = "SELECT ID,ticket_cost,`date`,lagage_cost,flight_ID FROM current_flight";
     private FlightDAO flightDAO;
 
     public CurrentFlightMySQLDAO(FlightDAO flightDAO, Connection connection) {
@@ -60,7 +60,7 @@ public class CurrentFlightMySQLDAO implements CurrentFlightDao {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(findAll);
             CurrentFlight currentFlight;
-            ArrayList<CurrentFlight> currentFlights= new ArrayList<CurrentFlight>();
+            ArrayList<CurrentFlight> currentFlights = new ArrayList<CurrentFlight>();
             while (resultSet.next()) {
                 currentFlight = createCurrentFlightEntity(resultSet);
                 currentFlights.add(currentFlight);

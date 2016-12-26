@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface CurrentFlightService {
     CurrentFlight find(Integer id);
+
     List<CurrentFlight> findAll();
 }

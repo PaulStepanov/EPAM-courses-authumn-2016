@@ -1,7 +1,7 @@
 package controller.controlers.filters;
 
 public enum Privilege {
-    USER(0),MODERATOR(1),ADMIN(2);
+    USER(0), MODERATOR(1), ADMIN(2);
     private Integer value;
 
     Privilege(Integer value) {

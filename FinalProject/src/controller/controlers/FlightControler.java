@@ -62,11 +62,11 @@ public class FlightControler extends Controler {
                 "/availableFlights",
                 (request, response) -> {
                     CurrentFlightService currentFlightService = (CurrentFlightService) ServiceManager.getService(CurrentFlightService.class);
-                    ArrayList<CurrentFlight> flights= (ArrayList<CurrentFlight>) currentFlightService.findAll();
-                    request.setAttribute("currentFlights",flights);
+                    ArrayList<CurrentFlight> flights = (ArrayList<CurrentFlight>) currentFlightService.findAll();
+                    request.setAttribute("currentFlights", flights);
                     RequestDispatcher curFlightsDispatcher = request.getServletContext().getRequestDispatcher("/avalibleFlights.jsp");
                     try {
-                        curFlightsDispatcher.forward(request,response);
+                        curFlightsDispatcher.forward(request, response);
                     } catch (ServletException e) {
                         e.printStackTrace();
                     } catch (IOException e) {

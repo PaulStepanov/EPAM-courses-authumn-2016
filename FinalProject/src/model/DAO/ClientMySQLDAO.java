@@ -17,6 +17,7 @@ public class ClientMySQLDAO implements ClientDAO {
         this.userDAO = userDAO;
         this.connection = connection;
     }
+
     public ClientMySQLDAO(UserDAO userDAO) {
         this.userDAO = userDAO;
     }

@@ -15,7 +15,8 @@ public class ServiceManager {
     private ServiceManager() {
         ConnectionManager connectionManager = new ConnectionPoolManager();
         this.map.put(FlightService.class, new FlightServiceImp(connectionManager));
-        this.map.put(TicketService.class, new TicketServiceImpl(connectionManager) {});
+        this.map.put(TicketService.class, new TicketServiceImpl(connectionManager) {
+        });
         this.map.put(UsersService.class, new UsersServiceIml(connectionManager));
         this.map.put(CurrentFlightService.class, new CurrentFlightServiceImpl(connectionManager));
     }

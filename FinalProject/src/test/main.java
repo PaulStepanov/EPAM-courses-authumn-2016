@@ -26,7 +26,8 @@ public class main {
         DateTimeFormatter fmt = ISODateTimeFormat.basicTime();
         Duration duration = new Duration(4564564);
         System.out.println(duration.getMillis());
-        DateTime dateTime= new DateTime();
-        System.out.println(DateTimeParser.parseDateTime(dateTime));;
+        DateTime dateTime = new DateTime();
+        System.out.println(DateTimeParser.parseDateTime(dateTime));
+        ;
     }
 }

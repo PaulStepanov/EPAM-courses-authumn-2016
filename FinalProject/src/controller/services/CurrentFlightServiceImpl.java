@@ -18,15 +18,15 @@ public class CurrentFlightServiceImpl implements CurrentFlightService {
     public CurrentFlightServiceImpl(ConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
         this.currentFlightDao = (CurrentFlightDao) FabrikMySQLDAO.getDAO(CurrentFlightDao.class);
-        this.connectionService=new ConnectionServiceControl(currentFlightDao);
+        this.connectionService = new ConnectionServiceControl(currentFlightDao);
     }
 
     @Override
     public CurrentFlight find(Integer id) {
         connectionService.setConnection(connectionManager.getConnection());
-        CurrentFlight res=null;
+        CurrentFlight res = null;
         try {
-            res= this.currentFlightDao.read(id);
+            res = this.currentFlightDao.read(id);
         } catch (PersistExeption throwables) {
             throwables.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class CurrentFlightServiceImpl implements CurrentFlightService {
     @Override
     public List<CurrentFlight> findAll() {
         connectionService.setConnection(connectionManager.getConnection());
-        ArrayList res= (ArrayList) this.currentFlightDao.findAll();
+        ArrayList res = (ArrayList) this.currentFlightDao.findAll();
         connectionService.releaseConection();
         return res;
     }

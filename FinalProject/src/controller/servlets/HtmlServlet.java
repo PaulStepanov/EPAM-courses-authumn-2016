@@ -1,10 +1,11 @@
 package controller.servlets;
 
 import controller.controlers.AdminControler;
-import controller.controlers.ControlerExecuter;
+import controller.controlers.ControlerRegister;
 import controller.controlers.FlightControler;
 import controller.controlers.TicketsControler;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,18 +16,21 @@ import java.io.IOException;
  */
 
 public class HtmlServlet extends HttpServlet {
-    private ControlerExecuter loginExec=new ControlerExecuter(new AdminControler());
-    private ControlerExecuter flightExec=new ControlerExecuter(new FlightControler());
-    private ControlerExecuter userExec=new ControlerExecuter(new TicketsControler());
+    private ControlerRegister controlerRegister= new ControlerRegister();
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        controlerRegister.registerControler(new AdminControler());
+        controlerRegister.registerControler(new FlightControler());
+        controlerRegister.registerControler(new TicketsControler());
+    }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        flightExec.initExecutor(request,response);
-        loginExec.initExecutor(request,response);
-        userExec.initExecutor(request,response);
-        //TODO page not found it's a bug
+        controlerRegister.activateControlers(request,response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        loginExec.initExecutor(request,response);
-        userExec.initExecutor(request,response);
+        controlerRegister.activateControlers(request,response);
     }
 }

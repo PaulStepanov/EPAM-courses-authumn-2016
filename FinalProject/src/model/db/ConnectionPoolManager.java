@@ -18,7 +18,7 @@ public class ConnectionPoolManager implements ConnectionManager {
     public ConnectionPoolManager() {
         try {
             Context ctx = new InitialContext();
-            this.dataSource=(DataSource) ctx.lookup("java:comp/env/jdbc/airline");
+            this.dataSource = (DataSource) ctx.lookup("java:comp/env/jdbc/airline");
         } catch (NamingException e) {
             e.printStackTrace();
         }

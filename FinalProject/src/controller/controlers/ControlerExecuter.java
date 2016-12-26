@@ -21,12 +21,12 @@ public class ControlerExecuter {
 
     public void initExecutor(HttpServletRequest request, HttpServletResponse response) {
         method = RouteMethod.valueOf(request.getMethod());
-        HashMap<RouteMethod,HashMap> routings=controler.getRoutings();
-        HashMap<String,Route> routMap=routings.get(
+        HashMap<RouteMethod, HashMap> routings = controler.getRoutings();
+        HashMap<String, Route> routMap = routings.get(
                 RouteMethod.valueOf(request.getMethod()));
         routMap.forEach((uri, route) -> {
             if (route.getURI().equals(request.getPathInfo())) {// TODO написать функцию обрабатывающую URL и ошибкт
-                    route.getRoutingFunction().exec(request, response);
+                route.getRoutingFunction().exec(request, response);
             }
         });
     }

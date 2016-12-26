@@ -12,6 +12,7 @@ public class UserMySQLDAO implements UserDAO {
     private Connection connection;
     private final String readStatement = "SELECT login,password,email,priviliges_lvl FROM `users` WHERE ID=?";
     private final String findByLoginStatement = "SELECT ID from users WHERE `login`=? AND `password`=? ";
+
     public UserMySQLDAO(Connection connection) {
         this.connection = connection;
     }
@@ -55,8 +56,8 @@ public class UserMySQLDAO implements UserDAO {
     public User readByLoginAndPassword(String login, String password) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(findByLoginStatement);
-            preparedStatement.setString(1,login);
-            preparedStatement.setString(2,password);
+            preparedStatement.setString(1, login);
+            preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 return this.read(resultSet.getInt("ID"));

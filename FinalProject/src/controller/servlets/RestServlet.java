@@ -1,8 +1,10 @@
 package controller.servlets;
 
-import controller.controlers.ControlerExecuter;
+import controller.controlers.ControlerRegister;
 import controller.controlers.LoginControler;
 
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,13 +14,20 @@ import java.io.IOException;
 также*/
 //@WebServlet("/*")
 public class RestServlet extends HttpServlet {
-    private ControlerExecuter loginExec=new ControlerExecuter(new LoginControler());
+    private ControlerRegister controlerRegister= new ControlerRegister();
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        controlerRegister.registerControler(new LoginControler());
+    }
+
     /*Testing*/
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        loginExec.initExecutor(request,response);
+        controlerRegister.activateControlers(request,response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) {
-        loginExec.initExecutor(request,response);
+        controlerRegister.activateControlers(request,response);
     }
 }

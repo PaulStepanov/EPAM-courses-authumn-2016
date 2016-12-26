@@ -10,10 +10,10 @@ import java.sql.SQLException;
 
 public class UsersServiceIml implements UsersService {
     private UserDAO userDAO;
-    private boolean validUser=false;
+    private boolean validUser = false;
     private ConnectionManager connectionManager;
 
-    public UsersServiceIml( ConnectionManager connectionManager) {
+    public UsersServiceIml(ConnectionManager connectionManager) {
         this.connectionManager = connectionManager;
         this.userDAO = (UserDAO) FabrikMySQLDAO.getDAO(UserDAO.class);
     }
@@ -22,7 +22,7 @@ public class UsersServiceIml implements UsersService {
     public User getByLoginAndPassword(String login, String password) {
         Connection connection = connectionManager.getConnection();
         userDAO.setConnection(connection);
-        User result=userDAO.readByLoginAndPassword(login,password);
+        User result = userDAO.readByLoginAndPassword(login, password);
         try {
             connection.close();
         } catch (SQLException e) {

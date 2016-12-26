@@ -45,7 +45,7 @@ public class TicketsControler extends Controler {
                     vip = vip == null ? "off" : "on";
                     User user = (User) request.getSession().getAttribute("user");
                     TicketService ticketService = (TicketService) ServiceManager.getService(TicketService.class);
-                    boolean registred=ticketService.registerTicket(flightID, luggage,
+                    boolean registred = ticketService.registerTicket(flightID, luggage,
                             vip.equals("on"),
                             user.getId());
                     try {

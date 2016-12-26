@@ -19,12 +19,12 @@ public class TicketServiceImpl implements TicketService {
     public TicketServiceImpl(ConnectionManager connectionManag) {
         this.connectionManager = connectionManag;
         this.ticketDAO = (TicketDAO) FabrikMySQLDAO.getDAO(TicketDAO.class);
-        this.connectionService=new ConnectionServiceControl(ticketDAO);
+        this.connectionService = new ConnectionServiceControl(ticketDAO);
     }
 
     public List<Ticket> findAll() {
         connectionService.setConnection(connectionManager.getConnection());
-        List<Ticket> result=ticketDAO.findAll();
+        List<Ticket> result = ticketDAO.findAll();
         connectionService.releaseConection();
         return result;
     }
@@ -32,33 +32,33 @@ public class TicketServiceImpl implements TicketService {
     @Override
     public List<Ticket> findByUser(Integer userID) {
         connectionService.setConnection(connectionManager.getConnection());
-        List<Ticket> result=ticketDAO.findByUser(userID);
+        List<Ticket> result = ticketDAO.findByUser(userID);
         connectionService.releaseConection();
         return result;
     }
 
     @Override
-    public boolean registerTicket(Integer currentFlightId, Integer luggage, boolean VIP,Integer clientID) {
-        CurrentFlightService currentFlightService= (CurrentFlightService) ServiceManager.getService(CurrentFlightService.class);
-        CurrentFlight currentFlight=currentFlightService.find(currentFlightId);
-        if (luggage>currentFlight.getFlight().getMaxLagage()) {
+    public boolean registerTicket(Integer currentFlightId, Integer luggage, boolean VIP, Integer clientID) {
+        CurrentFlightService currentFlightService = (CurrentFlightService) ServiceManager.getService(CurrentFlightService.class);
+        CurrentFlight currentFlight = currentFlightService.find(currentFlightId);
+        if (luggage > currentFlight.getFlight().getMaxLagage()) {
             return false;
         }
         connectionService.setConnection(connectionManager.getConnection());
-        Ticket ticket=new Ticket();
-        CurrentFlight flight =new CurrentFlight();
+        Ticket ticket = new Ticket();
+        CurrentFlight flight = new CurrentFlight();
         flight.setId(currentFlightId);
         ticket.setCurrentFlight(flight);
         ticket.setVip(VIP);
 
         ticket.setLagageCapacity(luggage);
-        Client client=new Client();
+        Client client = new Client();
         client.setId(clientID);
         ticket.setClient(client);
 
-        Integer cost=0;
-        cost+=currentFlight.getTicketCost();
-        cost+=currentFlight.getLagageCost()*luggage;
+        Integer cost = 0;
+        cost += currentFlight.getTicketCost();
+        cost += currentFlight.getLagageCost() * luggage;
         ticket.setFlightCost(cost);
         try {
             ticketDAO.create(ticket);
